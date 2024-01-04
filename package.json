@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.1.1",
     "@tailwindcss/forms": "^0.5.7",
+    "@vercel/speed-insights": "^1.0.2",
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
     "next": "14.0.4",
