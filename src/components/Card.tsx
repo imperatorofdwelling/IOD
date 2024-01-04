@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { collection, getDocs, getFirestore } from '@firebase/firestore'
-import { app } from '@/app/firebase'
+import { firebaseApp } from '@/app/firebase'
 import { Product } from '@/app/types'
 
 export default function Card() {
@@ -10,7 +10,7 @@ export default function Card() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const db = getFirestore(app)
+        const db = getFirestore(firebaseApp)
         const cardsCollection = collection(db, 'cards')
         const snapshot = await getDocs(cardsCollection)
         const productsData = snapshot.docs.map((doc) => ({

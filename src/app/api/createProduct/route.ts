@@ -1,29 +1,35 @@
-import admin from 'firebase-admin'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { firebaseApp } from '@/app/firebase'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === 'POST') {
+export async function POST(req: NextRequest) {
+  const { method, body } = req
+
+  if (method === 'POST') {
     try {
-      const { name, address } = req.body
+      const db = getFirestore(firebaseApp)
+      const cardsCollection = collection(db, 'cards')
 
-      if (!name || !address) {
-        return res.status(400).json({ error: 'Имя и адрес обязательны' })
+      if (!body) {
+        return NextResponse.json(
+          { error: 'Тело запроса отсутствует' },
+          { status: 400 }
+        )
       }
 
-      const db = admin.firestore()
-      const cardsCollection = db.collection('cards')
+      const { name, address } = await req.json()
 
-      const newCardRef = await cardsCollection.add({ name, address })
+      const newCardRef = await addDoc(cardsCollection, { name, address })
 
-      return res.status(200).json({ success: true, id: newCardRef.id })
+      return NextResponse.json({ success: true, id: newCardRef.id })
     } catch (error) {
       console.error('Ошибка при добавлении карточки:', error)
-      return res.status(500).json({ error: 'Внутренняя ошибка сервера' })
+      return NextResponse.json(
+        { error: 'Внутренняя ошибка сервера' },
+        { status: 500 }
+      )
     }
   }
 
-  return res.status(405).json({ error: 'Метод не разрешен' })
+  return NextResponse.json({ error: 'Метод не разрешен' }, { status: 405 })
 }
