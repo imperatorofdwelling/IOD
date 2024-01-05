@@ -45,19 +45,19 @@ export default function Navbar() {
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link
                     href="/"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
                     Home
                   </Link>
                   <Link
                     href="/team"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
                     Team
                   </Link>
                   <Link
                     href="/products"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
                     Projects
                   </Link>
@@ -71,8 +71,8 @@ export default function Navbar() {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       {user ? (
-                        <p className="text-gray-700">
-                          Welcome, {user && user.email}
+                        <p className="text-black">
+                          Welcome, {(user && user.displayName) || user.email}
                         </p>
                       ) : (
                         <Image

@@ -1,25 +1,27 @@
-'use client'
+// AuthContext.tsx
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  User as FirebaseAuthUser,
+  updateProfile as updateFirebaseProfile,
 } from 'firebase/auth'
 import { auth } from '@/app/firebase'
 
-// Определение типов для пользователя
 interface User {
   uid: string
   email: string
+  displayName: string
 }
 
-// Определение контекста для аутентификации
 interface AuthContextProps {
   user: User | null
   createUser: (email: string, password: string) => Promise<void>
   signIn: (email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
+  updateUserProfile: (displayName: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined)
@@ -32,13 +34,12 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
-        // Пользователь вошел в систему
         setUser({
           uid: authUser.uid,
           email: authUser.email || '',
+          displayName: authUser.displayName || '',
         })
       } else {
-        // Пользователь вышел из системы
         setUser(null)
       }
     })
@@ -58,17 +59,32 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
     await signOut(auth)
   }
 
+  const updateUserProfile = async (displayName: string) => {
+    const authUser: FirebaseAuthUser | null = auth.currentUser
+
+    if (authUser) {
+      // Обновляем имя пользователя
+      await updateFirebaseProfile(authUser, { displayName })
+
+      // Обновляем локальное состояние пользователя
+      setUser({
+        ...user!,
+        displayName,
+      })
+    }
+  }
+
   const value: AuthContextProps = {
     user,
     createUser,
     signIn,
     signOut: signOutUser,
+    updateUserProfile,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-// Хук для удобного использования контекста в компонентах
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (!context) {
