@@ -1,3 +1,4 @@
+// components/ProtectedRoute.js
 import React from 'react'
 import { useAuth } from '@/context/AuthContext'
 import { useRouter } from 'next/navigation'
@@ -7,10 +8,11 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
 
   if (!user) {
-    router.push('/sign-up')
+    router.push('/sign-in')
+    return null
   }
 
-  return <>{user && children}</>
+  return <>{children}</>
 }
 
 export default ProtectedRoute
