@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import { AuthContextProvider } from '@/context/AuthContext'
-import { metadata } from './metaData'
 
 const inter = Inter({ subsets: ['latin'] })
 

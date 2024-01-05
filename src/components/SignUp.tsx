@@ -99,12 +99,12 @@ export default function SignUp() {
           Go to home page
         </Link>
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?{' '}
+          You member?{' '}
           <Link
-            href="/sign-up"
+            href="/sign-in"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Register
+            Sign In
           </Link>
         </p>
       </div>

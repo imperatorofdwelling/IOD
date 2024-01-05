@@ -1,4 +1,4 @@
-// context/AuthContext.ts
+'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import {
   createUserWithEmailAndPassword,

@@ -1,0 +1,13 @@
+{
+    "translation": {
+        "navigation":{
+            "teams": "Teams",
+            "products": "Products",
+            "welcome": "Welcome",
+            "profile": "Profile",
+            "signIn": "SignIn",
+            "signOut": "SignOut"
+            
+        }
+    }
+}
