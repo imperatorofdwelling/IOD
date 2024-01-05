@@ -1,14 +1,11 @@
-import type { Metadata } from 'next'
+'use client'
 import { Inter } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
+import { AuthContextProvider } from '@/context/AuthContext'
+import { metadata } from './metaData'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'Imperator of dwelling',
-  description: 'Imperator of dwelling',
-}
 
 export default function RootLayout({
   children,
@@ -18,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <SpeedInsights />
+        <AuthContextProvider>
+          {children}
+          <SpeedInsights />
+        </AuthContextProvider>
       </body>
     </html>
   )

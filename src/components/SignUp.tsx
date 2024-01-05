@@ -1,10 +1,30 @@
 'use client'
 import { useState } from 'react'
+import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function SignUp() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
+
+  const { createUser } = useAuth()
+
+  const handleSignUp = async () => {
+    setError('')
+    try {
+      await createUser(email, password)
+      setName('')
+      setEmail('')
+      setPassword('')
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -68,7 +88,10 @@ export default function SignUp() {
         </div>
 
         <div>
-          <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          <button
+            onClick={handleSignUp}
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
             Sign up
           </button>
         </div>

@@ -2,6 +2,8 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { useAuth } from '@/context/AuthContext'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 function classNames(...classes: string[]) {
@@ -9,6 +11,16 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const { user, signOut } = useAuth()
+  const router = useRouter()
+  const handleLogout = async () => {
+    try {
+      await signOut()
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <Disclosure as="nav" className="bg-white shadow z-50">
       {({ open }) => (
@@ -51,13 +63,19 @@ export default function Navbar() {
                     <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <Image
-                        className="h-8 w-8 rounded-full"
-                        height={32}
-                        width={32}
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      {user ? (
+                        <p className="text-gray-700">
+                          Welcome, {user && user.email}
+                        </p>
+                      ) : (
+                        <Image
+                          src="/defaultImage.png"
+                          width={32}
+                          height={32}
+                          alt="default Image"
+                          className="rounded-full"
+                        />
+                      )}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -69,34 +87,53 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            href="/profile"
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Your Profile
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            href="#"
-                            className={classNames(
-                              active ? 'bg-gray-100' : '',
-                              'block px-4 py-2 text-sm text-gray-700'
-                            )}
-                          >
-                            Sign out
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
+                    {!user ? (
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              href="/sign-in"
+                              className={classNames(
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
+                              )}
+                            >
+                              Sign in
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      </Menu.Items>
+                    ) : (
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              href="/profile"
+                              className={classNames(
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
+                              )}
+                            >
+                              Your Profile
+                            </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              href="/"
+                              onClick={handleLogout}
+                              className={classNames(
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
+                              )}
+                            >
+                              Logout
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      </Menu.Items>
+                    )}
                   </Transition>
                 </Menu>
               </div>
