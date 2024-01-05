@@ -63,7 +63,7 @@ export default function SignIn() {
             <div className="text-sm">
               <Link
                 href="/"
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
+                className="font-semibold text-black hover:text-gray-500"
               >
                 Forgot password?
               </Link>
@@ -86,7 +86,7 @@ export default function SignIn() {
         <div>
           <button
             onClick={handleSignIn}
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Sign in
           </button>
@@ -98,7 +98,7 @@ export default function SignIn() {
           Not a member?{' '}
           <Link
             href="/sign-up"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="font-semibold leading-6 text-black hover:text-gray-500"
           >
             Register
           </Link>

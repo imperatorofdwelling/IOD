@@ -67,7 +67,7 @@ export default function SignUp() {
             <div className="text-sm">
               <Link
                 href="/"
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
+                className="font-semibold text-black hover:text-gray-500"
               >
                 Forgot password?
               </Link>
@@ -82,7 +82,7 @@ export default function SignUp() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function SignUp() {
         <div>
           <button
             onClick={handleSignUp}
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
           >
             Sign up
           </button>
@@ -102,7 +102,7 @@ export default function SignUp() {
           You member?{' '}
           <Link
             href="/sign-in"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="font-semibold leading-6 text-black hover:text-gray-500"
           >
             Sign In
           </Link>
