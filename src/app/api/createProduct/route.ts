@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
-import { firebaseApp } from '@/app/firebase'
+import { app } from '@/app/firebase'
 
 export async function POST(req: NextRequest) {
   const { method, body } = req
 
   if (method === 'POST') {
     try {
-      const db = getFirestore(firebaseApp)
+      const db = getFirestore(app)
       const cardsCollection = collection(db, 'cards')
 
       if (!body) {
