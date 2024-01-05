@@ -3,7 +3,7 @@ import React from 'react'
 import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
 
-const ProfilePage: React.FC = () => {
+export default function Profile() {
   const { user } = useAuth()
 
   return (
@@ -30,5 +30,3 @@ const ProfilePage: React.FC = () => {
     </div>
   )
 }
-
-export default ProfilePage
