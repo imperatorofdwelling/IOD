@@ -17,9 +17,9 @@ export async function POST(req: NextRequest) {
         )
       }
 
-      const { name, address } = await req.json()
+      const { uid, name, address } = await req.json()
 
-      const newCardRef = await addDoc(cardsCollection, { name, address })
+      const newCardRef = await addDoc(cardsCollection, { uid, name, address })
 
       return NextResponse.json({ success: true, id: newCardRef.id })
     } catch (error) {

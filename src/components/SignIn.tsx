@@ -26,7 +26,7 @@ export default function SignIn() {
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
+          Вход
         </h2>
       </div>
 
@@ -36,7 +36,7 @@ export default function SignIn() {
             htmlFor="email"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Email address
+            Почта
           </label>
           <div className="mt-2">
             <input
@@ -58,14 +58,14 @@ export default function SignIn() {
               htmlFor="password"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Password
+              Пароль
             </label>
             <div className="text-sm">
               <Link
                 href="/"
                 className="font-semibold text-black hover:text-gray-500"
               >
-                Forgot password?
+                Забыли пароль?
               </Link>
             </div>
           </div>
@@ -88,19 +88,16 @@ export default function SignIn() {
             onClick={handleSignIn}
             className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            Sign in
+            Войти
           </button>
         </div>
-        <Link className="mt-5 text-center text-sm text-gray-500" href="/">
-          Go to home page
-        </Link>
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?{' '}
+          Не зарегестрирован?{' '}
           <Link
             href="/sign-up"
             className="font-semibold leading-6 text-black hover:text-gray-500"
           >
-            Register
+            Регистрация
           </Link>
         </p>
       </div>

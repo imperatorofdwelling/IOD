@@ -3,4 +3,5 @@ export interface Product {
   imageSrc: string
   name: string
   address: string
+  uid: string
 }

@@ -47,19 +47,19 @@ export default function Navbar() {
                     href="/"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
-                    Home
+                    Главная
                   </Link>
                   <Link
                     href="/team"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
-                    Team
+                    Команда
                   </Link>
                   <Link
                     href="/products"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-gray-300 hover:text-gray-700"
                   >
-                    Projects
+                    Продукты
                   </Link>
                 </div>
               </div>
@@ -72,7 +72,8 @@ export default function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       {user ? (
                         <p className="text-black">
-                          Welcome, {(user && user.displayName) || user.email}
+                          Добро пожаловать,{' '}
+                          {(user && user.displayName) || user.email}
                         </p>
                       ) : (
                         <Image
@@ -105,7 +106,7 @@ export default function Navbar() {
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
-                              Sign in
+                              Войти
                             </Link>
                           )}
                         </Menu.Item>
@@ -121,7 +122,7 @@ export default function Navbar() {
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
-                              Your Profile
+                              Профиль
                             </Link>
                           )}
                         </Menu.Item>
@@ -135,7 +136,7 @@ export default function Navbar() {
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
-                              Logout
+                              Выйти
                             </Link>
                           )}
                         </Menu.Item>
@@ -155,21 +156,21 @@ export default function Navbar() {
                 href="/"
                 className="block border-l-4 border-gray-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-black"
               >
-                Home
+                Главная
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="/team"
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
               >
-                Team
+                Команда
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
                 href="/products"
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
               >
-                Projects
+                Продукты
               </Disclosure.Button>
             </div>
           </Disclosure.Panel>
