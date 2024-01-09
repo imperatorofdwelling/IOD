@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 export default function SignUp() {
+  const [role, setRole] = useState('client')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,7 +14,7 @@ export default function SignUp() {
   const [error, setError] = useState('')
   const router = useRouter()
 
-  const { createUser, updateUserProfile } = useAuth()
+  const { createUser, updateUserProfile, user } = useAuth()
 
   const handleSignUp = async () => {
     setError('')
@@ -27,8 +28,10 @@ export default function SignUp() {
       setName('')
       setEmail('')
       setPassword('')
+      setRole('client')
       setPasswordRetype('')
       toast.success('Успешно')
+      console.log({ user })
       router.push('/')
     } catch (error) {
       console.error(error)
@@ -46,9 +49,41 @@ export default function SignUp() {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm space-y-6">
         <div>
+          <div className="mt-2 flex lg:justify-between items-center justify-center">
+            <div className="flex items-center mb-4">
+              <input
+                id="client-checkbox"
+                type="radio"
+                name="role"
+                value="client"
+                checked={role === 'client'}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600  focus:ring-2 "
+              />
+              <label className="ms-2 text-sm font-medium text-black ">
+                Клиент
+              </label>
+            </div>
+            <div className="flex items-center mb-4">
+              <input
+                id="landlord-checkbox"
+                type="radio"
+                name="role"
+                value="landlord"
+                checked={role === 'landlord'}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600  focus:ring-2 "
+              />
+              <label className="ms-2 text-sm font-medium text-black ">
+                Арендодатель
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="relative">
           <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            htmlFor="role"
+            className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
           >
             ФИО
           </label>
@@ -66,10 +101,10 @@ export default function SignUp() {
             />
           </div>
         </div>
-        <div>
+        <div className="relative">
           <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
+            htmlFor="role"
+            className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
           >
             Почта
           </label>
@@ -89,10 +124,10 @@ export default function SignUp() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between">
+          <div className="relative">
             <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              htmlFor="role"
+              className="absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900"
             >
               Пароль
             </label>
@@ -110,11 +145,11 @@ export default function SignUp() {
             />
           </div>
         </div>
-        <div>
+        <div className="relative">
           <div className="flex items-center justify-between">
             <label
               htmlFor="passwordRetype"
-              className={`block text-sm font-medium leading-6 text-gray-900 ${
+              className={`absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium text-gray-900 ${
                 password !== passwordRetype ? 'text-red-500' : ''
               }`}
             >
