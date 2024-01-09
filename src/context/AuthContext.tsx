@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   User as FirebaseAuthUser,
   updateProfile as updateFirebaseProfile,
 } from 'firebase/auth'
@@ -22,6 +23,7 @@ interface AuthContextProps {
   signIn: (email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
   updateUserProfile: (displayName: string) => Promise<void>
+  passwordResetEmail: (email: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined)
@@ -59,6 +61,10 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
     await signOut(auth)
   }
 
+  const passwordResetEmail = async (email: string) => {
+    await sendPasswordResetEmail(auth, email)
+  }
+
   const updateUserProfile = async (displayName: string) => {
     const authUser: FirebaseAuthUser | null = auth.currentUser
 
@@ -80,6 +86,7 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = ({
     signIn,
     signOut: signOutUser,
     updateUserProfile,
+    passwordResetEmail,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

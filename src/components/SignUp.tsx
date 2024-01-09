@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 export default function SignUp() {
   const [name, setName] = useState('')
@@ -27,9 +28,11 @@ export default function SignUp() {
       setEmail('')
       setPassword('')
       setPasswordRetype('')
+      toast.success('Успешно')
       router.push('/')
     } catch (error) {
       console.error(error)
+      toast.error('Что-то пошло не так')
     }
   }
 
@@ -111,7 +114,9 @@ export default function SignUp() {
           <div className="flex items-center justify-between">
             <label
               htmlFor="passwordRetype"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className={`block text-sm font-medium leading-6 text-gray-900 ${
+                password !== passwordRetype ? 'text-red-500' : ''
+              }`}
             >
               Подтверждение пароля
             </label>

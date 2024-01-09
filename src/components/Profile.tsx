@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 
 const Profile: React.FC = () => {
   const { user, updateUserProfile } = useAuth()
@@ -49,6 +50,7 @@ const Profile: React.FC = () => {
         address: 'Example Address',
       })
       console.log({ user })
+      toast.success('Профиль успешно сохранен')
     } catch (error) {
       console.error('Error updating profile:', error)
     } finally {
@@ -83,11 +85,11 @@ const Profile: React.FC = () => {
         <h2 className="text-2xl font-semibold mb-4">Профиль</h2>
         <div className="mb-4">
           <label className="text-gray-600">Почта:</label>
-          <p className="text-gray-800">{user.email}</p>
+          <p className="text-gray-800">{user?.email}</p>
         </div>
         <div className="mb-4 flex items-center space-x-2">
           <label className="text-gray-600">ФИО:</label>
-          <p className="text-gray-800">{user.displayName}</p>
+          <p className="text-gray-800">{user?.displayName}</p>
           {/* <input
             type="text"
             value={displayName}
