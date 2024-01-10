@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { useAuth } from '@/context/AuthContext'
+import { query } from '@firebase/firestore'
 import Link from 'next/link'
 
-const Profile: React.FC = () => {
+interface ProfileProps {
+  uid: string | any
+}
+
+const Profile: React.FC<ProfileProps> = ({ uid }) => {
   const { user } = useAuth()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
