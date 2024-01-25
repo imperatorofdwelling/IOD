@@ -1,5 +1,5 @@
 function Home() {
-  return <div>Imperator Of Dwelling</div>;
+  return <div>Imperator Of Dwelling</div>
 }
 
-export default Home;
+export default Home
