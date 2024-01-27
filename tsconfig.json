@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,10 +19,24 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["app/*"],
-      "@components/*": ["app/components/*"],
-      "@hooks/*": ["app/hooks/*"]
-    }
+      "@/*": [
+        "app/*"
+      ],
+      "@components/*": [
+        "app/components/*"
+      ],
+      "@hooks/*": [
+        "app/hooks/*"
+      ],
+      "@libs/*": [
+        "app/libs/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
