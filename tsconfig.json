@@ -1,38 +1,23 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@components/*": [
-        "app/components/*"
-      ],
-      "@hooks/*": [
-        "app/hooks/*"
-      ],
+      "@/*": ["app/*"],
+      "@components/*": ["app/components/*"],
+      "@hooks/*": ["app/hooks/*"]
     }
   },
   "include": [
@@ -40,7 +25,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.js",
     "tailwind.config.js"
   ],
   "exclude": [
