@@ -2,7 +2,7 @@
 import { AiOutlineMenu } from 'react-icons/ai'
 import Avatar from './Avatar'
 import { useState } from 'react'
-import MenuItem from './navbar/MenuItem'
+import MenuItem from '@components/navbar/MenuItem'
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
