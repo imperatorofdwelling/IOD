@@ -1,6 +1,6 @@
 'use client'
 
-import useRegisterModal from '@hooks/useRegisterModal'
+import { signIn } from 'next-auth/react'
 import axios from 'axios'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
@@ -13,9 +13,10 @@ import Input from '../inputs/Input'
 import toast from 'react-hot-toast'
 import Button from '../Button'
 import useLoginModal from '@/hooks/useLoginModal'
+import { useRouter } from 'next/navigation'
 
 const LoginModal = () => {
-  const registerModal = useRegisterModal()
+  const router = useRouter()
   const loginModal = useLoginModal()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -25,7 +26,6 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: '',
       email: '',
       password: '',
     },
@@ -34,17 +34,20 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
 
-    axios
-      .post('/api/register', data)
-      .then(() => {
-        registerModal.onClose()
-      })
-      .catch((error) => {
-        toast.error('Что-то пошло не так')
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    signIn('credentials', {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false)
+      if (callback?.ok) {
+        toast.success('Успешно')
+        router.refresh()
+        loginModal.onClose()
+      }
+      if (callback?.error) {
+        toast.error('Неправильный логин или пароль')
+      }
+    })
   }
 
   const bodyContent = (
