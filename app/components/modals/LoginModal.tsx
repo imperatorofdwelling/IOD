@@ -5,16 +5,18 @@ import axios from 'axios'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../inputs/Input'
 import toast from 'react-hot-toast'
 import Button from '../Button'
+import useLoginModal from '@/hooks/useLoginModal'
 
-const RegisterModal = () => {
+const LoginModal = () => {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -49,22 +51,13 @@ const RegisterModal = () => {
     <div className="flex flex-col gap-4">
       <Heading
         title="Добро пожаловать в Imperator Of Dwelling"
-        subtitle="Создать аккаунт"
+        subtitle="Вход в аккаунт"
         center
       />
       <Input
         id="email"
         type="email"
         label="Почта"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-      <Input
-        id="name"
-        type="text"
-        label="ФИО"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -108,7 +101,7 @@ const RegisterModal = () => {
           <div>Уже зарегестрированы?</div>
           <div
             className="text-black cursor-pointer hover:underline transition"
-            onClick={registerModal.onClose}
+            onClick={loginModal.onClose}
           >
             Войти
           </div>
@@ -120,10 +113,10 @@ const RegisterModal = () => {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={registerModal.isOpen}
-      title="Регистрация"
+      isOpen={loginModal.isOpen}
+      title="Войти"
       actionLabel="Продолжить"
-      onClose={registerModal.onClose}
+      onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
@@ -131,4 +124,4 @@ const RegisterModal = () => {
   )
 }
 
-export default RegisterModal
+export default LoginModal
