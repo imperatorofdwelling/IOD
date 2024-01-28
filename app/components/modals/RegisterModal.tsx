@@ -41,6 +41,7 @@ const RegisterModal = () => {
         toast.error('Что-то пошло не так')
       })
       .finally(() => {
+        toast.success('Аккаунт создан')
         setIsLoading(false)
       })
   }
