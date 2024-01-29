@@ -1,11 +1,11 @@
-import { User } from '@prisma/client'
 import Container from '../Container'
 import Search from '../Search'
 import UserMenu from '../UserMenu'
 import Logo from './Logo'
+import { SafeUser } from '@/types'
 
 interface INavbar {
-  currentUser?: User | null
+  currentUser?: SafeUser | null
 }
 
 const Navbar: React.FC<INavbar> = ({ currentUser }) => {
