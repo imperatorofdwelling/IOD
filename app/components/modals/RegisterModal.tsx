@@ -2,7 +2,6 @@
 
 import useRegisterModal from '@hooks/useRegisterModal'
 import axios from 'axios'
-import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
 import { useState } from 'react'
@@ -91,19 +90,13 @@ const RegisterModal = () => {
         outline
         label="Войти с помощью Yandex"
         icon={FaYandex}
-        onClick={() => {}}
+        onClick={() => signIn('yandex')}
       />
       <Button
         outline
         label="Войти с помощью Google"
         icon={FcGoogle}
-        onClick={() => {}}
-      />
-      <Button
-        outline
-        label="Войти с помощью Github"
-        icon={AiFillGithub}
-        onClick={() => signIn('github')}
+        onClick={() => signIn('google')}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex justify-center flex-row items-center gap-2">

@@ -1,6 +1,6 @@
 import Container from '../Container'
-import Search from '../Search'
-import UserMenu from '../UserMenu'
+import Search from './Search'
+import UserMenu from './UserMenu'
 import Logo from './Logo'
 import { SafeUser } from '@/types'
 

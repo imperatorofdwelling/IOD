@@ -1,6 +1,6 @@
 'use client'
 import { AiOutlineMenu } from 'react-icons/ai'
-import Avatar from './Avatar'
+import Avatar from '../Avatar'
 import { useState } from 'react'
 import MenuItem from '@components/navbar/MenuItem'
 import useRegisterModal from '@hooks/useRegisterModal'
@@ -34,7 +34,7 @@ const UserMenu: React.FC<IUserMenu> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
