@@ -66,6 +66,11 @@ const Modal: React.FC<IModal> = ({
     return null
   }
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSubmit()
+  }
+
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70">
@@ -75,7 +80,10 @@ const Modal: React.FC<IModal> = ({
               showModal ? 'translate-y-0' : 'translate-y-full'
             } ${showModal ? 'opacity-100' : 'opacity-0'}`}
           >
-            <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <form
+              onSubmit={handleFormSubmit}
+              className="translate h-auto lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+            >
               <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
                 <button
                   className="p-1 border-0 hover:opacity-70 transition absolute right-9"
@@ -85,7 +93,7 @@ const Modal: React.FC<IModal> = ({
                 </button>
                 <div className="text-lg font-semibold">{title}</div>
               </div>
-              <div className="relative p-6 flex-auto">{body}</div>
+              <div className="relative p-6">{body}</div>
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
                   {secondaryAction && secondaryActionLabel && (
@@ -104,7 +112,7 @@ const Modal: React.FC<IModal> = ({
                 </div>
                 {footer}
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

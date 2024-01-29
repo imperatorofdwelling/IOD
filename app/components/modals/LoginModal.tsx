@@ -12,10 +12,12 @@ import toast from 'react-hot-toast'
 import Button from '../Button'
 import useLoginModal from '@/hooks/useLoginModal'
 import { useRouter } from 'next/navigation'
+import useRegisterModal from '@/hooks/useRegisterModal'
 
 const LoginModal = () => {
   const router = useRouter()
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -38,7 +40,7 @@ const LoginModal = () => {
     }).then((callback) => {
       setIsLoading(false)
       if (callback?.ok) {
-        toast.success('Успешно')
+        toast.success('Вход выполнен')
         router.refresh()
         loginModal.onClose()
       }
@@ -93,12 +95,15 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex justify-center flex-row items-center gap-2">
-          <div>Уже зарегестрированы?</div>
+          <div>Нет аккаунта?</div>
           <div
             className="text-black cursor-pointer hover:underline transition"
-            onClick={loginModal.onClose}
+            onClick={() => {
+              loginModal.onClose()
+              registerModal.onOpen()
+            }}
           >
-            Войти
+            Регистрация
           </div>
         </div>
       </div>

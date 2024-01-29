@@ -12,9 +12,13 @@ import Input from '../inputs/Input'
 import toast from 'react-hot-toast'
 import Button from '../Button'
 import { signIn } from 'next-auth/react'
+import useLoginModal from '@/hooks/useLoginModal'
+import { useRouter } from 'next/navigation'
 
 const RegisterModal = () => {
+  const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -36,12 +40,14 @@ const RegisterModal = () => {
       .post('/api/register', data)
       .then(() => {
         registerModal.onClose()
+        toast.success('Аккаунт создан')
+        router.refresh()
+        loginModal.onOpen()
       })
       .catch((error) => {
         toast.error('Что-то пошло не так')
       })
       .finally(() => {
-        toast.success('Аккаунт создан')
         setIsLoading(false)
       })
   }
@@ -103,7 +109,10 @@ const RegisterModal = () => {
           <div>Уже зарегестрированы?</div>
           <div
             className="text-black cursor-pointer hover:underline transition"
-            onClick={registerModal.onClose}
+            onClick={() => {
+              registerModal.onClose()
+              loginModal.onOpen()
+            }}
           >
             Войти
           </div>

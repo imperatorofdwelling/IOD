@@ -22,12 +22,23 @@ const UserMenu: React.FC<IUserMenu> = ({ currentUser }) => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        <div
-          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
-          onClick={() => {}}
-        >
-          Забронировать
-        </div>
+        {currentUser ? (
+          <div
+            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+            onClick={() => {}}
+          >
+            Приветвую, {currentUser?.name}!
+          </div>
+        ) : (
+          <div
+            className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+            onClick={() => {
+              registerModal.onOpen()
+            }}
+          >
+            Забронировать
+          </div>
+        )}
         <div
           className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-100 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
           onClick={toggleOpen}
@@ -44,9 +55,8 @@ const UserMenu: React.FC<IUserMenu> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="Поездки" />
-                <MenuItem onClick={() => {}} label="Избранное" />
-                <MenuItem onClick={() => {}} label="Забронировано" />
+                <MenuItem onClick={() => {}} label="Мои объявления" />
+                <MenuItem onClick={() => {}} label="Моё избранное" />
                 <hr />
                 <MenuItem
                   onClick={() => {
