@@ -3,7 +3,7 @@
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Modal from './Modal'
 import Heading from '../Heading'
@@ -30,6 +30,11 @@ const LoginModal = () => {
       password: '',
     },
   })
+
+  const toggle = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true)
@@ -98,10 +103,7 @@ const LoginModal = () => {
           <div>Нет аккаунта?</div>
           <div
             className="text-black cursor-pointer hover:underline transition"
-            onClick={() => {
-              loginModal.onClose()
-              registerModal.onOpen()
-            }}
+            onClick={toggle}
           >
             Регистрация
           </div>

@@ -4,7 +4,7 @@ import useRegisterModal from '@hooks/useRegisterModal'
 import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Modal from './Modal'
 import Heading from '../Heading'
@@ -51,6 +51,11 @@ const RegisterModal = () => {
         setIsLoading(false)
       })
   }
+
+  const toggle = useCallback(() => {
+    registerModal.onClose()
+    loginModal.onOpen()
+  }, [loginModal, registerModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -109,10 +114,7 @@ const RegisterModal = () => {
           <div>Уже зарегестрированы?</div>
           <div
             className="text-black cursor-pointer hover:underline transition"
-            onClick={() => {
-              registerModal.onClose()
-              loginModal.onOpen()
-            }}
+            onClick={toggle}
           >
             Войти
           </div>
