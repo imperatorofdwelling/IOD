@@ -55,7 +55,8 @@ const UserMenu: React.FC<IUserMenu> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="Мои объявления" />
+                <MenuItem onClick={() => {}} label="Забронировано" />
+                <MenuItem onClick={() => {}} label="Разместить объявление" />
                 <MenuItem onClick={() => {}} label="Моё избранное" />
                 <hr />
                 <MenuItem
