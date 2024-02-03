@@ -48,6 +48,7 @@ const RentModal = () => {
   const guestCount = watch('guestCount')
   const roomCount = watch('roomCount')
   const bathroomCount = watch('bathroomCount')
+  const imageSrc = watch('imageSrc')
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -126,7 +127,10 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading title="Добавьте фотографии" />
-        <ImageUpload />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue('imageSrc', value)}
+        />
       </div>
     )
   }
