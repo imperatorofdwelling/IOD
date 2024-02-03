@@ -5,9 +5,13 @@ import { useMemo, useState } from 'react'
 import Heading from '../Heading'
 import CitySelect from '../inputs/CitySelect'
 import { useRouter } from 'next/navigation'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Counter from '../inputs/Counter'
 import ImageUpload from '../inputs/ImageUpload'
+import Input from '../inputs/Input'
+import { error } from 'console'
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 enum STEPS {
   LOCATION = 0,
@@ -64,6 +68,29 @@ const RentModal = () => {
 
   const onNext = () => {
     setStep((value) => value + 1)
+  }
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext()
+    }
+    setIsLoading(true)
+
+    axios
+      .post('/api/listings', data)
+      .then(() => {
+        toast.success('Успешно')
+        router.refresh()
+        reset()
+        setStep(STEPS.LOCATION)
+        rentModal.onClose()
+      })
+      .catch(() => {
+        toast.error('Что-то пошло не так')
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   const actionLabel = useMemo(() => {
@@ -134,6 +161,47 @@ const RentModal = () => {
       </div>
     )
   }
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="Описание" subtitle="Дописать текст" />
+        <Input
+          id="title"
+          label="Заголовок"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Описание"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    )
+  }
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="Цена" />
+        <Input
+          id="price"
+          label="Цена"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    )
+  }
 
   return (
     <Modal
@@ -141,7 +209,7 @@ const RentModal = () => {
       title="Разместить объявление"
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
