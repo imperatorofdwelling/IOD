@@ -7,7 +7,7 @@ import getCurrentUser from '@/actions/getCurrentUser';
 export async function POST(req: Request) {
     const currentUser = await getCurrentUser();
     if (!currentUser) {
-        return NextResponse.error
+        return NextResponse.json({ success: false, message: 'User not found' })
     }
 
     const body = await req.json()
