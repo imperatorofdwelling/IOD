@@ -1,7 +1,7 @@
 'use client'
 
 import useCities from '@/hooks/useCities'
-import { SafeUser } from '@/types'
+import { SafeListing, SafeUser } from '@/types'
 import { Listing, Reservation } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
@@ -12,7 +12,7 @@ import { BiRuble } from 'react-icons/bi'
 import Button from '../Button'
 
 interface IListingCard {
-  data: Listing
+  data: SafeListing
   reservation?: Reservation
   onAction?: (id: string) => void
   disabled?: boolean

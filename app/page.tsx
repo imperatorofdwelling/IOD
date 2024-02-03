@@ -24,8 +24,8 @@ async function Home() {
             return (
               <ListingCard
                 key={listing.id}
-                data={listing}
                 currentUser={currentUser}
+                data={listing}
               />
             )
           })}

@@ -11,6 +11,7 @@ const Logo = () => {
       height={50}
       width={50}
       src="/images/logo.svg"
+      onClick={() => router.push('/')}
     />
   )
 }
