@@ -80,9 +80,8 @@ const ListingCard: React.FC<IListingCard> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">
-          {location?.region}, {location?.value}
-        </div>
+        <div className="font-semibold text-lg">{location?.value}</div>
+        <div className="font-light text-neutral-500">{data.title}</div>
         <div className="flex flex-row items-center">
           <BiRuble size={18} className="text-neutral-600" />
           <div className="font-semibold ">{price}</div>

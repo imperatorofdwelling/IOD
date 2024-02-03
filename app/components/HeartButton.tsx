@@ -1,6 +1,6 @@
 'use client'
 
-import useFavorite from '@/hooks/usefavorite'
+import useFavorite from '@/hooks/useFavorite'
 import { SafeUser } from '@/types'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
@@ -25,7 +25,7 @@ const HeartButton: React.FC<IHeartButton> = ({ listingId, currentUser }) => {
       />
       <AiFillHeart
         size={24}
-        className={hasFavorited ? 'fill-red-500' : 'fill-neutral-500/70'}
+        className={hasFavorited ? ' fill-red-500' : 'fill-neutral-500/70'}
       />
     </div>
   )

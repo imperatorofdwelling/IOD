@@ -1,51 +1,64 @@
-import { useRouter } from 'next/navigation';
 import axios from "axios";
-import { useMemo, useCallback } from 'react'
-import { toast } from 'react-hot-toast';
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo } from "react";
+import { toast } from "react-hot-toast";
 
-import { SafeUser } from '@/types';
-import useLoginModal from './useLoginModal';
 
-interface IUserFavorite {
-    listingId: string
+
+import useLoginModal from "./useLoginModal";
+import { SafeUser } from "@/types";
+
+interface IUseFavorite {
+    listingId: string;
     currentUser?: SafeUser | null
 }
 
-const useFavorite = ({ listingId, currentUser }: IUserFavorite) => {
-    const router = useRouter()
-    const loginModal = useLoginModal()
+const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
+    const router = useRouter();
+
+    const loginModal = useLoginModal();
 
     const hasFavorited = useMemo(() => {
-        const list = currentUser?.favoriteIds || []
+        const list = currentUser?.favoriteIds || [];
 
-        return list.includes(listingId)
-    }, [currentUser, listingId])
+        return list.includes(listingId);
+    }, [currentUser, listingId]);
 
     const toggleFavorite = useCallback(async (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation()
+        e.stopPropagation();
+
         if (!currentUser) {
-            return loginModal.onOpen()
+            return loginModal.onOpen();
         }
+
         try {
-            let request
+            let request;
+
             if (hasFavorited) {
-                request = () => axios.delete(`/api/favorites/${listingId}`)
+                request = () => axios.delete(`/api/favorites/${listingId}`);
             } else {
-                request = () => axios.post(`/api/favorites/${listingId}`)
+                request = () => axios.post(`/api/favorites/${listingId}`);
             }
 
-            await request()
-            router.refresh()
-            toast.success('Добавлено в избранное')
+            await request();
+            router.refresh();
+            toast.success('Успешно');
         } catch (error) {
-            toast.error('Что-то пошло не так')
+            toast.error('Что-то пошло не так.');
         }
-    }, [currentUser, hasFavorited, listingId, loginModal, router])
+    },
+        [
+            currentUser,
+            hasFavorited,
+            listingId,
+            loginModal,
+            router
+        ]);
 
     return {
         hasFavorited,
-        toggleFavorite
+        toggleFavorite,
     }
 }
 
-export default useFavorite
+export default useFavorite;

@@ -167,7 +167,7 @@ const RentModal = () => {
         <Heading title="Описание" subtitle="Дописать текст" />
         <Input
           id="title"
-          label="Заголовок"
+          label="Укажите адрес"
           disabled={isLoading}
           register={register}
           errors={errors}
