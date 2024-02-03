@@ -7,6 +7,9 @@ import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 import { format } from 'date-fns'
 import Image from 'next/image'
+import HeartButton from '../HeartButton'
+import { BiRuble } from 'react-icons/bi'
+import Button from '../Button'
 
 interface IListingCard {
   data: Listing
@@ -73,7 +76,26 @@ const ListingCard: React.FC<IListingCard> = ({
             className="object-cover h-full w-full group-hover:scale-110 transition"
             fill
           />
+          <div className="absolute top-3 right-3">
+            <HeartButton listingId={data.id} currentUser={currentUser} />
+          </div>
         </div>
+        <div className="font-semibold text-lg">
+          {location?.region}, {location?.value}
+        </div>
+        <div className="flex flex-row items-center">
+          <BiRuble size={18} className="text-neutral-600" />
+          <div className="font-semibold ">{price}</div>
+          <div>{!reservation && <div className="font-light">/ сутки</div>}</div>
+        </div>
+        {onAction && actionLabel && (
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+          />
+        )}
       </div>
     </div>
   )
