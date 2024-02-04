@@ -1,8 +1,7 @@
 'use client'
 
 import useCities from '@/hooks/useCities'
-import { SafeListing, SafeUser } from '@/types'
-import { Listing, Reservation } from '@prisma/client'
+import { SafeListing, SafeReservation, SafeUser } from '@/types'
 import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 import { format } from 'date-fns'
@@ -13,7 +12,7 @@ import Button from '../Button'
 
 interface IListingCard {
   data: SafeListing
-  reservation?: Reservation
+  reservation?: SafeReservation
   onAction?: (id: string) => void
   disabled?: boolean
   actionLabel?: string
@@ -82,6 +81,7 @@ const ListingCard: React.FC<IListingCard> = ({
         </div>
         <div className="font-semibold text-lg">{location?.value}</div>
         <div className="font-light text-neutral-500">{data.title}</div>
+        <div className="font-light text-neutral-500">{reservationDate}</div>
         <div className="flex flex-row items-center">
           <BiRuble size={18} className="text-neutral-600" />
           <div className="font-semibold ">{price}</div>
