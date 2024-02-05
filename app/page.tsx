@@ -1,12 +1,16 @@
 import getCurrentUser from './actions/getCurrentUser'
-import getListings from './actions/getListings'
+import getListings, { IListings } from './actions/getListings'
 import ClientOnly from './components/ClientOnly'
 import Container from './components/Container'
 import EmptyState from './components/EmptyState'
 import ListingCard from './components/listings/ListingCard'
 
-async function Home() {
-  const ligstings = await getListings()
+interface IHome {
+  searchParams: IListings
+}
+
+const Home = async ({ searchParams }: IHome) => {
+  const ligstings = await getListings(searchParams)
   const currentUser = await getCurrentUser()
 
   if (ligstings.length === 0) {
