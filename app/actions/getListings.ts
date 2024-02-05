@@ -1,5 +1,4 @@
-import { gu } from 'date-fns/locale';
-import prisma from '@libs/prismadb'
+import prisma from '@/libs/prismadb'
 
 export interface IListings {
     userId?: string

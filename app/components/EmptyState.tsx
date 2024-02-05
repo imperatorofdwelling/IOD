@@ -1,8 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Heading from './Heading'
 import Button from './Button'
+import Heading from './Heading'
 
 interface IEmptyState {
   title?: string

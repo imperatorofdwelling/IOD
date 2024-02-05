@@ -5,7 +5,6 @@ import { differenceInDays } from 'date-fns'
 import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
 import { BiSearch } from 'react-icons/bi'
-import { start } from 'repl'
 
 const Search = () => {
   const searchModal = useSearchModal()

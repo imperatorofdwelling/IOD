@@ -1,6 +1,5 @@
 'use client'
 
-import useRegisterModal from '@hooks/useRegisterModal'
 import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { FaYandex } from 'react-icons/fa'
@@ -14,6 +13,7 @@ import Button from '../Button'
 import { signIn } from 'next-auth/react'
 import useLoginModal from '@/hooks/useLoginModal'
 import { useRouter } from 'next/navigation'
+import useRegisterModal from '@/hooks/useRegisterModal'
 
 const RegisterModal = () => {
   const loginModal = useLoginModal()

@@ -22,13 +22,13 @@
       "@/*": [
         "app/*"
       ],
-      "@components/*": [
+      "@/components/*": [
         "app/components/*"
       ],
-      "@hooks/*": [
+      "@/hooks/*": [
         "app/hooks/*"
       ],
-      "@libs/*": [
+      "@/libs/*": [
         "app/libs/*"
       ]
     },

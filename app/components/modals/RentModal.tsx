@@ -9,7 +9,6 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import Counter from '../inputs/Counter'
 import ImageUpload from '../inputs/ImageUpload'
 import Input from '../inputs/Input'
-import { error } from 'console'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 

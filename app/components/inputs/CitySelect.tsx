@@ -1,6 +1,6 @@
 'use client'
+import useCities from '@/hooks/useCities'
 import Select from 'react-select'
-import useCities from '@hooks/useCities'
 
 export type CitiesSelectValue = {
   value: string
