@@ -9,7 +9,7 @@ interface HomeProps {
   searchParams: IListingsParams
 }
 
-const Home = async ({ searchParams }: HomeProps) => {
+async function Home({ searchParams }: HomeProps) {
   const listings = await getListings(searchParams)
   const currentUser = await getCurrentUser()
 
@@ -20,29 +20,19 @@ const Home = async ({ searchParams }: HomeProps) => {
       </ClientOnly>
     )
   }
-
   return (
     <ClientOnly>
       <Container>
-        <div
-          className="
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4
-            xl:grid-cols-5
-            2xl:grid-cols-6
-            gap-8
-          "
-        >
-          {listings.map((listing: any) => (
-            <ListingCard
-              currentUser={currentUser}
-              key={listing.id}
-              data={listing}
-            />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+          {listings.map((listing) => {
+            return (
+              <ListingCard
+                key={listing.id}
+                data={listing}
+                currentUser={currentUser}
+              />
+            )
+          })}
         </div>
       </Container>
     </ClientOnly>
