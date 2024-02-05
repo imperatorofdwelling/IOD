@@ -71,7 +71,10 @@ const UserMenu: React.FC<IUserMenu> = ({ currentUser }) => {
                   label="Забронировано"
                 />
                 <MenuItem onClick={() => {}} label="Мои объявления" />
-                <MenuItem onClick={() => {}} label="Моё избранное" />
+                <MenuItem
+                  onClick={() => router.push('/favorites')}
+                  label="Моё избранное"
+                />
                 <hr />
                 <MenuItem
                   onClick={() => {
