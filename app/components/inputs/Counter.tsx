@@ -5,7 +5,7 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 
 interface ICounter {
   title: string
-  subtitle: string
+  subtitle?: string
   value: number
   onChange: (value: number) => void
 }
