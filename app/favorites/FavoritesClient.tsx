@@ -19,7 +19,7 @@ const FavoritesClient: React.FC<IFavoritesClient> = ({
         {listings.map((listing) => (
           <ListingCard
             key={listing.id}
-            data={listing}
+            data={{ ...listing, createdAt: new Date(listing.createdAt) }}
             currentUser={currentUser}
           />
         ))}

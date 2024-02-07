@@ -4,13 +4,14 @@ import Container from '@/components/Container'
 import Heading from '@/components/Heading'
 import ListingCard from '@/components/listings/ListingCard'
 import { SafeListing, SafeUser } from '@/types'
+import { Listing } from '@prisma/client'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import toast from 'react-hot-toast'
 
 interface IPropertiesClient {
-  listings: SafeListing[]
+  listings: Listing[]
   currentUser?: SafeUser | null
 }
 
