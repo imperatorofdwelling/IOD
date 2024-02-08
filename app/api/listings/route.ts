@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         data: {
             title,
             description,
-            imageSrc,
+            imageSrc: [imageSrc],
             roomCount,
             bathroomCount,
             guestCount,
