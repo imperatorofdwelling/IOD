@@ -4,7 +4,8 @@ import { Range } from 'react-date-range'
 import { BiRuble } from 'react-icons/bi'
 import Calendar from '../inputs/Calendar'
 import Button from '../Button'
-
+import { ICreatePayment, YooCheckout } from '@a2seven/yoo-checkout'
+import { v4 as uuidv4 } from 'uuid'
 interface IListingReservation {
   price: number
   dateRange: Range
@@ -24,6 +25,36 @@ const ListingReservation: React.FC<IListingReservation> = ({
   disabled,
   disabledDates,
 }) => {
+  const checkout = new YooCheckout({
+    shopId: process.env.SHOP_ID || '333233',
+    secretKey: process.env.SHOP_SECRET || '1231dasda21rfas',
+  })
+  const idempotenceKey = uuidv4().toString()
+  const createPayload: ICreatePayment = {
+    amount: {
+      value: totalPrice.toString(),
+      currency: 'RUB',
+    },
+    payment_method_data: {
+      type: 'bank_card',
+    },
+    confirmation: {
+      type: 'redirect',
+      return_url: '/',
+    },
+  }
+  const createPayment = async () => {
+    try {
+      const payment = await checkout.createPayment(
+        createPayload,
+        idempotenceKey
+      )
+      console.log(payment)
+      return payment
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className="bg-white rounded-xl border-[1px] border-neutral-200 overflow-hidden">
       <div className="">
