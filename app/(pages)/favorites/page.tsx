@@ -5,8 +5,11 @@ import getCurrentUser from '@/actions/getCurrentUser'
 import FavoritesClient from './FavoritesClient'
 
 const FavoritesPage = async () => {
-  const listings = await getFavoriteListings()
-  const currentUser = await getCurrentUser()
+  const [listings, currentUser] = await Promise.all([
+    getFavoriteListings(),
+    getCurrentUser(),
+  ])
+
   if (listings.length === 0) {
     return (
       <ClientOnly>
@@ -17,6 +20,7 @@ const FavoritesPage = async () => {
       </ClientOnly>
     )
   }
+
   return (
     <ClientOnly>
       <FavoritesClient listings={listings} currentUser={currentUser} />

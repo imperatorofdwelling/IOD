@@ -6,6 +6,7 @@ import { getListingsUserId } from '@/actions/getListingsUserId'
 
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser()
+  
   if (!currentUser) {
     return (
       <ClientOnly>
@@ -23,6 +24,7 @@ const PropertiesPage = async () => {
       </ClientOnly>
     )
   }
+
   return (
     <ClientOnly>
       <PropertiesClient listings={listings} currentUser={currentUser} />
