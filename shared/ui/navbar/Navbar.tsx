@@ -2,13 +2,11 @@ import Container from '../Container'
 import Search from './Search'
 import UserMenu from './UserMenu'
 import Logo from './Logo'
-import { SafeUser } from '@/types'
+import getCurrentUser from '@/actions/getCurrentUser'
 
-interface INavbar {
-  currentUser?: SafeUser | null
-}
+const Navbar = async () => {
+  const currentUser = await getCurrentUser()
 
-const Navbar: React.FC<INavbar> = ({ currentUser }) => {
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">

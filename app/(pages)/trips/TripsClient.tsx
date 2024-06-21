@@ -1,54 +1,71 @@
 'use client'
 
-import { toast } from 'react-hot-toast'
-import { useCallback, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { SafeReservation, SafeUser } from '@/types'
+import type { SafeUser } from '@/types'
 import Heading from 'shared/ui/Heading'
 import ListingCard from 'shared/ui/listings/ListingCard'
 import Container from 'shared/ui/Container'
-import { $axios } from 'shared/axios'
+import getReservations from '@/actions/getReservations'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import ClientOnly from 'shared/ui/ClientOnly'
+import EmptyState from 'shared/ui/EmptyState'
+import { Loader } from 'shared/ui/Loader'
+import { $axios, AxiosError } from 'shared/axios'
+import toast from 'react-hot-toast'
 
 interface TripsClientProps {
-  reservations: SafeReservation[]
-  currentUser?: SafeUser | null
+    currentUser?: SafeUser | null
 }
 
-const TripsClient: React.FC<TripsClientProps> = ({
-  reservations,
-  currentUser,
-}) => {
-  const router = useRouter()
-  const [deletingId, setDeletingId] = useState('')
+const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
+    const queryClient = useQueryClient()
 
-  const onCancel = useCallback(
-    (id: string) => {
-      setDeletingId(id)
+    const {
+        data: reservationsData,
+        isError,
+        isLoading,
+    } = useQuery({
+        queryKey: ['reservations'],
+        queryFn: () => getReservations({ userId: currentUser?.id || '' }),
+    })
 
-      $axios
-        .delete(`reservations/${id}`)
-        .then(() => {
-          toast.success('Отменено')
-          router.refresh()
-        })
-        .catch((error) => {
-          toast.error(error?.response?.data?.error)
-        })
-        .finally(() => {
-          setDeletingId('')
-        })
-    },
-    [router]
-  )
+    const { mutate, isPending } = useMutation({
+        mutationFn: (actionId: string) => {
+            return $axios.delete(`reservations/${actionId}`)
+        },
+        onSuccess: () => {
+            toast.success('Отменено')
+            queryClient.invalidateQueries({ queryKey: ['reservations'] })
+        },
+        onError: (error) => {
+            if (error instanceof AxiosError) {
+                toast.error(error?.response?.data?.error)
+            }
+        },
+    })
 
-  return (
-    <Container>
-      <Heading
-        title="Trips"
-        subtitle="Where you've been and where you're going"
-      />
-      <div
-        className="
+    if (isLoading) {
+        return <Loader />
+    }
+
+    if (!reservationsData?.length && !isLoading) {
+        return (
+            <ClientOnly>
+                <EmptyState
+                    title="Нет бронированных квартир"
+                    subtitle="Пожалуйста создайте бронь"
+                />
+            </ClientOnly>
+        )
+    }
+
+    return (
+        <Container>
+            <Heading
+                title="Trips"
+                subtitle="Where you've been and where you're going"
+            />
+            <div
+                className="
           mt-10
           grid 
           grid-cols-1 
@@ -59,22 +76,20 @@ const TripsClient: React.FC<TripsClientProps> = ({
           2xl:grid-cols-6
           gap-8
         "
-      >
-        {reservations.map((reservation: any) => (
-          <ListingCard
-            key={reservation.id}
-            data={reservation.listing}
-            reservation={reservation}
-            actionId={reservation.id}
-            onAction={onCancel}
-            disabled={deletingId === reservation.id}
-            actionLabel="Cancel reservation"
-            currentUser={currentUser}
-          />
-        ))}
-      </div>
-    </Container>
-  )
+            >
+                {reservationsData?.map((reservation) => (
+                    <ListingCard
+                        key={reservation.id}
+                        reservation={reservation}
+                        actionLabel="Cancel reservation"
+                        currentUser={currentUser}
+                        onAction={() => mutate(reservation.id)}
+                        disabled={isPending}
+                    />
+                ))}
+            </div>
+        </Container>
+    )
 }
 
 export default TripsClient

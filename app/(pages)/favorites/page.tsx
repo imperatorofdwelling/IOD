@@ -5,27 +5,27 @@ import getCurrentUser from '@/actions/getCurrentUser'
 import FavoritesClient from './FavoritesClient'
 
 const FavoritesPage = async () => {
-  const [listings, currentUser] = await Promise.all([
-    getFavoriteListings(),
-    getCurrentUser(),
-  ])
+    const [listings, currentUser] = await Promise.all([
+        getFavoriteListings(),
+        getCurrentUser(),
+    ])
 
-  if (listings.length === 0) {
+    if (!listings) {
+        return (
+            <ClientOnly>
+                <EmptyState
+                    title="Нет избранных"
+                    subtitle="Пожалуйста, добавьте квартиру в избранное"
+                />
+            </ClientOnly>
+        )
+    }
+
     return (
-      <ClientOnly>
-        <EmptyState
-          title="Нет избранных"
-          subtitle="Пожалуйста, добавьте квартиру в избранное"
-        />
-      </ClientOnly>
+        <ClientOnly>
+            <FavoritesClient listings={listings} currentUser={currentUser} />
+        </ClientOnly>
     )
-  }
-
-  return (
-    <ClientOnly>
-      <FavoritesClient listings={listings} currentUser={currentUser} />
-    </ClientOnly>
-  )
 }
 
 export default FavoritesPage

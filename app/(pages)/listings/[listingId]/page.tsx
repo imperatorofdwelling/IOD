@@ -6,34 +6,36 @@ import EmptyState from 'shared/ui/EmptyState'
 import ListingClient from './listingClient'
 
 interface IParams {
-  listingId?: string
+    listingId?: string
 }
 
 const ListingPage = async ({ params }: { params: IParams }) => {
-  const [listingResult, currentUserResult, reservationsResult] =
-    await Promise.all([
-      getListingById(params),
-      getCurrentUser(),
-      getReservations(params),
-    ])
+    const { listingId } = params
+    
+    const [listingResult, currentUserResult, reservationsResult] =
+        await Promise.all([
+            getListingById(listingId),
+            getCurrentUser(),
+            getReservations(params),
+        ])
 
-  if (!listingResult) {
+    if (!listingResult) {
+        return (
+            <ClientOnly>
+                <EmptyState />
+            </ClientOnly>
+        )
+    }
+
     return (
-      <ClientOnly>
-        <EmptyState />
-      </ClientOnly>
+        <ClientOnly>
+            <ListingClient
+                currentUser={currentUserResult}
+                listing={listingResult}
+                reservations={reservationsResult}
+            />
+        </ClientOnly>
     )
-  }
-
-  return (
-    <ClientOnly>
-      <ListingClient
-        currentUser={currentUserResult}
-        listing={listingResult}
-        reservations={reservationsResult}
-      />
-    </ClientOnly>
-  )
 }
 
 export default ListingPage

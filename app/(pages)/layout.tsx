@@ -9,6 +9,7 @@ import LoginModal from 'shared/ui/modals/LoginModal'
 import getCurrentUser from '../actions/getCurrentUser'
 import RentModal from 'shared/ui/modals/RentModal'
 import SearchModal from 'shared/ui/modals/SearchModal'
+import { TanStackQueryProvider } from '@/providers/TanStackQueryProvider'
 
 const font = Nunito({ subsets: ['latin'] })
 
@@ -17,25 +18,25 @@ export const metadata: Metadata = {
   description: 'Booking application',
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
-  const currentUser = await getCurrentUser()
-
+}) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <ClientOnly>
-          <ToasterProvider />
-          <RegisterModal />
-          <RentModal />
-          <LoginModal />
-          <SearchModal />
-          <Navbar currentUser={currentUser} />
-        </ClientOnly>
-        <div className="pb-20 pt-28">{children}</div>
+        <TanStackQueryProvider>
+          <ClientOnly>
+            <ToasterProvider />
+            <RegisterModal />
+            <RentModal />
+            <LoginModal />
+            <SearchModal />
+            <Navbar />
+          </ClientOnly>
+          <div className="pb-20 pt-28">{children}</div>
+        </TanStackQueryProvider>
       </body>
     </html>
   )
