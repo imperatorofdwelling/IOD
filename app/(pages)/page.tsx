@@ -1,4 +1,4 @@
-import { getListings, getCurrentUser } from 'shared/api/server-actions'
+import { getListings, getCurrentUser } from 'shared/services/server-actions'
 import ClientOnly from 'shared/ui/ClientOnly'
 import Container from 'shared/ui/Container'
 import EmptyState from 'shared/ui/EmptyState'

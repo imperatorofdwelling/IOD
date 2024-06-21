@@ -9,7 +9,7 @@ import HeartButton from '../HeartButton'
 import { BiRuble } from 'react-icons/bi'
 import Button from '../Button'
 import Link from 'next/link'
-import { getReservations } from 'shared/api/server-actions'
+import { getReservations } from 'shared/services/server-actions'
 
 type TReservation = Awaited<ReturnType<typeof getReservations>>[number]
 type TListing = Omit<TReservation['listing'], 'createdAt'> & {

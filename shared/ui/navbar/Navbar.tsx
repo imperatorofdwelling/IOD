@@ -2,7 +2,7 @@ import Container from '../Container'
 import Search from './Search'
 import UserMenu from './UserMenu'
 import Logo from './Logo'
-import { getCurrentUser } from 'shared/api/server-actions'
+import { getCurrentUser } from 'shared/services/server-actions'
 
 const Navbar = async () => {
     const currentUser = await getCurrentUser()

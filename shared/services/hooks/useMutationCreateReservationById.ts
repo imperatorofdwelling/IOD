@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import { SetStateAction } from 'react'
 import toast from 'react-hot-toast'
 import { $axios, AxiosError } from 'shared/axios'
+import { QueryKeys } from 'shared/consts/queryKeys'
 
 interface Body {
     totalPrice: number
@@ -11,11 +11,7 @@ interface Body {
     listingId?: string
 }
 
-interface Args {
-    setDateRange: (...args: any) => any
-}
-
-export const useMutationCreateReservationById = ({ setDateRange }: Args) => {
+export const useMutationCreateReservationById = () => {
     const router = useRouter()
     const queryClient = useQueryClient()
 
@@ -23,8 +19,9 @@ export const useMutationCreateReservationById = ({ setDateRange }: Args) => {
         mutationFn: (body: Body) => $axios.post('reservations', body),
         onSuccess: () => {
             toast.success('Успешно')
-            setDateRange()
-            queryClient.invalidateQueries({ queryKey: ['reservations'] })
+            queryClient.invalidateQueries({
+                queryKey: QueryKeys.getReservations,
+            })
             router.push('/trips')
         },
         onError: (error) => {

@@ -1,3 +1,4 @@
+'use server'
 import prisma from '@/libs/prismadb' // Убедитесь, что путь к файлу prismadb корректен
 
 export const getListingsUserId = async (userId: string) => {

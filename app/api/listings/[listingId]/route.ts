@@ -1,4 +1,4 @@
-import { getCurrentUser } from 'shared/api/server-actions'
+import { getCurrentUser } from 'shared/services/server-actions'
 import prisma from '@/libs/prismadb'
 import { NextResponse } from 'next/server'
 

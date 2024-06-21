@@ -2,7 +2,7 @@ import {
     getCurrentUser,
     getListingById,
     getReservations,
-} from 'shared/api/server-actions'
+} from 'shared/services/server-actions'
 import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import ListingClient from './listingClient'

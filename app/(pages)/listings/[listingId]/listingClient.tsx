@@ -8,7 +8,7 @@ import type { SafeListing, SafeReservation, SafeUser } from '@/types'
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
 import { useEffect, useMemo, useState, type FC } from 'react'
 import { Range } from 'react-date-range'
-import { useMutationCreateReservationById } from 'shared/api/hooks'
+import { useMutationCreateReservationById } from 'shared/services/hooks'
 
 const initialDateRange = {
     startDate: new Date(),
@@ -46,17 +46,15 @@ const ListingClient: FC<IListingClient> = ({
     const [totalPrice, setTotalPrice] = useState(listing.price)
     const [dateRange, setDateRange] = useState<Range>(initialDateRange)
 
-    const { mutate, isPending } = useMutationCreateReservationById({
-        setDateRange: () => setDateRange(initialDateRange),
-    })
+    const { mutateAsync, isPending } = useMutationCreateReservationById()
 
     const onCreateReservation = () => {
-        mutate({
+        mutateAsync({
             totalPrice,
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
             listingId: listing?.id,
-        })
+        }).then(() => setDateRange(initialDateRange))
     }
 
     useEffect(() => {

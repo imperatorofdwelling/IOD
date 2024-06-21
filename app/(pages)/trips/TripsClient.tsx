@@ -10,7 +10,7 @@ import { Loader } from 'shared/ui/Loader'
 import {
     useGetReservations,
     useMutationDeleteReservationById,
-} from 'shared/api/hooks'
+} from 'shared/services/hooks'
 
 interface TripsClientProps {
     currentUser?: SafeUser | null

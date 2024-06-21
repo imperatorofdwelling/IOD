@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { $axios, AxiosError } from 'shared/axios'
+import { QueryKeys } from 'shared/consts/queryKeys'
 
 export const useMutationDeleteReservationById = () => {
     const queryClient = useQueryClient()
@@ -11,7 +12,9 @@ export const useMutationDeleteReservationById = () => {
         },
         onSuccess() {
             toast.success('Отменено')
-            queryClient.invalidateQueries({ queryKey: ['reservations'] })
+            queryClient.invalidateQueries({
+                queryKey: QueryKeys.getReservations,
+            })
         },
         onError(error) {
             toast.success('Ошибка отмены резервации')
