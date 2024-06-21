@@ -4,47 +4,40 @@ import type { SafeUser } from '@/types'
 import Heading from 'shared/ui/Heading'
 import ListingCard from 'shared/ui/listings/ListingCard'
 import Container from 'shared/ui/Container'
-import getReservations from '@/actions/getReservations'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import { Loader } from 'shared/ui/Loader'
-import { $axios, AxiosError } from 'shared/axios'
-import toast from 'react-hot-toast'
+import {
+    useGetReservations,
+    useMutationDeleteReservationById,
+} from 'shared/api/hooks'
 
 interface TripsClientProps {
     currentUser?: SafeUser | null
 }
 
 const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
-    const queryClient = useQueryClient()
-
     const {
         data: reservationsData,
         isError,
         isLoading,
-    } = useQuery({
-        queryKey: ['reservations'],
-        queryFn: () => getReservations({ userId: currentUser?.id || '' }),
-    })
+    } = useGetReservations(currentUser?.id || '')
 
-    const { mutate, isPending } = useMutation({
-        mutationFn: (actionId: string) => {
-            return $axios.delete(`reservations/${actionId}`)
-        },
-        onSuccess: () => {
-            toast.success('Отменено')
-            queryClient.invalidateQueries({ queryKey: ['reservations'] })
-        },
-        onError: (error) => {
-            if (error instanceof AxiosError) {
-                toast.error(error?.response?.data?.error)
-            }
-        },
-    })
+    const { mutate, isPending } = useMutationDeleteReservationById()
 
     if (isLoading) {
         return <Loader />
+    }
+
+    if (isError) {
+        return (
+            <ClientOnly>
+                <EmptyState
+                    title="Ошибка получения данных"
+                    subtitle="Пожалуйста, обратитесь в службу поддержки или попробуйте позже."
+                />
+            </ClientOnly>
+        )
     }
 
     if (!reservationsData?.length && !isLoading) {

@@ -1,5 +1,4 @@
-import getCurrentUser from '../actions/getCurrentUser'
-import getListings from '../actions/getListings'
+import { getListings, getCurrentUser } from 'shared/api/server-actions'
 import ClientOnly from 'shared/ui/ClientOnly'
 import Container from 'shared/ui/Container'
 import EmptyState from 'shared/ui/EmptyState'
@@ -24,13 +23,10 @@ async function Home() {
             <Container>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
                     {ligstings.map((listing) => {
-                        type TListing = Omit<typeof listing, 'createdAt'> & {
-                            createdAt: string
-                        }
                         return (
                             <ListingCard
                                 key={listing.id}
-                                data={listing as unknown as TListing}
+                                data={listing}
                                 currentUser={currentUser}
                             />
                         )

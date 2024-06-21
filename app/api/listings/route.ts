@@ -1,17 +1,24 @@
-
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 import prisma from '@/libs/prismadb'
-import getCurrentUser from '@/actions/getCurrentUser';
-
+import { getCurrentUser } from 'shared/api/server-actions'
 
 export async function POST(req: Request) {
-    const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser()
     if (!currentUser) {
         return NextResponse.json({ success: false, message: 'User not found' })
     }
 
     const body = await req.json()
-    const { title, description, imageSrc, roomCount, bathroomCount, guestCount, location, price } = body
+    const {
+        title,
+        description,
+        imageSrc,
+        roomCount,
+        bathroomCount,
+        guestCount,
+        location,
+        price,
+    } = body
     Object.keys(body).forEach((value: string) => {
         if (!body[value]) {
             NextResponse.error()
@@ -27,11 +34,9 @@ export async function POST(req: Request) {
             guestCount,
             locationValue: location.value,
             price: parseInt(price, 10),
-            userId: currentUser.id
-        }
+            userId: currentUser.id,
+        },
     })
 
     return NextResponse.json(listing)
-
-
 }

@@ -4,15 +4,11 @@ import Container from 'shared/ui/Container'
 import ListingHead from 'shared/ui/listings/ListingHead'
 import ListingInfo from 'shared/ui/listings/ListingInfo'
 import ListingReservation from 'shared/ui/listings/ListingReservation'
-import useLoginModal from 'shared/hooks/useLoginModal'
 import type { SafeListing, SafeReservation, SafeUser } from '@/types'
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
-import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useState, type FC } from 'react'
+import { useEffect, useMemo, useState, type FC } from 'react'
 import { Range } from 'react-date-range'
-import toast from 'react-hot-toast'
-import { $axios, AxiosError } from 'shared/axios'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutationCreateReservationById } from 'shared/api/hooks'
 
 const initialDateRange = {
     startDate: new Date(),
@@ -33,10 +29,6 @@ const ListingClient: FC<IListingClient> = ({
     reservations = [],
     currentUser,
 }) => {
-    const loginModal = useLoginModal()
-
-    const router = useRouter()
-
     const disabledDates = useMemo(() => {
         let dates: Date[] = []
         reservations.forEach((reservation) => {
@@ -51,31 +43,21 @@ const ListingClient: FC<IListingClient> = ({
         return dates
     }, [reservations])
 
-    // const [isLoading, setLoading] = useState(false)
     const [totalPrice, setTotalPrice] = useState(listing.price)
     const [dateRange, setDateRange] = useState<Range>(initialDateRange)
-    const queryClient = useQueryClient()
 
-    const { mutate: onCreateReservation, isPending } = useMutation({
-        mutationFn: () =>
-            $axios.post('reservations', {
-                totalPrice,
-                startDate: dateRange.startDate,
-                endDate: dateRange.endDate,
-                listingId: listing?.id,
-            }),
-        onSuccess: () => {
-            toast.success('Успешно')
-            setDateRange(initialDateRange)
-            router.push('/trips')
-            queryClient.invalidateQueries({ queryKey: ['reservations'] })
-        },
-        onError: (error) => {
-            if (error instanceof AxiosError) {
-                toast.error(error?.response?.data.message)
-            }
-        },
+    const { mutate, isPending } = useMutationCreateReservationById({
+        setDateRange: () => setDateRange(initialDateRange),
     })
+
+    const onCreateReservation = () => {
+        mutate({
+            totalPrice,
+            startDate: dateRange.startDate,
+            endDate: dateRange.endDate,
+            listingId: listing?.id,
+        })
+    }
 
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {

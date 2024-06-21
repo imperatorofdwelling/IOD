@@ -1,6 +1,8 @@
-import getCurrentUser from '@/actions/getCurrentUser'
-import getListingById from '@/actions/getListingById'
-import getReservations from '@/actions/getReservations'
+import {
+    getCurrentUser,
+    getListingById,
+    getReservations,
+} from 'shared/api/server-actions'
 import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import ListingClient from './listingClient'
@@ -11,7 +13,7 @@ interface IParams {
 
 const ListingPage = async ({ params }: { params: IParams }) => {
     const { listingId } = params
-    
+
     const [listingResult, currentUserResult, reservationsResult] =
         await Promise.all([
             getListingById(listingId),

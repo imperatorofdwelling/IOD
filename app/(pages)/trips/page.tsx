@@ -1,7 +1,6 @@
 import EmptyState from 'shared/ui/EmptyState'
 import ClientOnly from 'shared/ui/ClientOnly'
-import getCurrentUser from '@/actions/getCurrentUser'
-import getReservations from '@/actions/getReservations'
+import { getCurrentUser } from 'shared/api/server-actions'
 import TripsClient from './TripsClient'
 
 const TripsPage = async () => {

@@ -1,8 +1,7 @@
 import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
-import getFavoriteListings from '@/actions/getFavoriteListings'
-import getCurrentUser from '@/actions/getCurrentUser'
 import FavoritesClient from './FavoritesClient'
+import { getFavoriteListings, getCurrentUser } from 'shared/api/server-actions'
 
 const FavoritesPage = async () => {
     const [listings, currentUser] = await Promise.all([

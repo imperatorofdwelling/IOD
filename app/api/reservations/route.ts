@@ -1,8 +1,6 @@
-
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 import prisma from '@/libs/prismadb'
-import getCurrentUser from '@/actions/getCurrentUser';
-
+import { getCurrentUser } from 'shared/api/server-actions'
 
 export async function POST(req: Request) {
     const currentUser = await getCurrentUser()
@@ -20,7 +18,7 @@ export async function POST(req: Request) {
 
     const listinAndReservation = await prisma.listing.update({
         where: {
-            id: listingId
+            id: listingId,
         },
         data: {
             reservations: {
@@ -28,10 +26,10 @@ export async function POST(req: Request) {
                     userId: currentUser.id,
                     startDate,
                     endDate,
-                    totalPrice
-                }
-            }
-        }
+                    totalPrice,
+                },
+            },
+        },
     })
     return NextResponse.json(listinAndReservation)
 }

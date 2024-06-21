@@ -9,10 +9,9 @@ import HeartButton from '../HeartButton'
 import { BiRuble } from 'react-icons/bi'
 import Button from '../Button'
 import Link from 'next/link'
-import getReservation from '@/actions/getReservations'
-import { Listing } from '@prisma/client'
+import { getReservations } from 'shared/api/server-actions'
 
-type TReservation = Awaited<ReturnType<typeof getReservation>>[number]
+type TReservation = Awaited<ReturnType<typeof getReservations>>[number]
 type TListing = Omit<TReservation['listing'], 'createdAt'> & {
     createdAt: string | Date
 }
