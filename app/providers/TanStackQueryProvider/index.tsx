@@ -5,7 +5,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 const queryClient = new QueryClient()
 
 export const TanStackQueryProvider = ({
-  children,
+    children,
 }: {
-  children: React.ReactNode
-}) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    children: React.ReactNode
+}) => {
+    return (
+        <QueryClientProvider client={queryClient}>
+            {children}
+        </QueryClientProvider>
+    )
+}
