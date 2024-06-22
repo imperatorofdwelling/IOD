@@ -10,19 +10,33 @@ import {
     useGetReservations,
     useMutationDeleteReservationById,
 } from 'shared/services/hooks'
+import { useEffect, useRef } from 'react'
+import toast from 'react-hot-toast'
 
 interface TripsClientProps {
     currentUser?: SafeUser | null
 }
 
-const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
+export const UserReservationsClient: React.FC<TripsClientProps> = ({
+    currentUser,
+}) => {
     const {
         data: reservationsData,
         isError,
         isLoading,
     } = useGetReservations(currentUser?.id || '')
+    const toustIdRef = useRef<any>(null)
 
-    const { mutate, isPending } = useMutationDeleteReservationById()
+    const { mutate, isPending, isSuccess } = useMutationDeleteReservationById()
+
+    useEffect(() => {
+        if (isPending) {
+            toustIdRef.current = toast.loading('Отмена бронирования...')
+        }
+        if (isSuccess) {
+            toast.dismiss(toustIdRef.current)
+        }
+    }, [isPending, isSuccess])
 
     if (isLoading) {
         return <Loader />
@@ -79,5 +93,3 @@ const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
         </Container>
     )
 }
-
-export default TripsClient

@@ -23,7 +23,7 @@ export const useMutationCreateReservationById = () => {
             queryClient.invalidateQueries({
                 queryKey: QueryKeys.getReservations,
             })
-            router.push('/trips')
+            router.push('/user-reservations')
         },
         onError: (error) => {
             if (error instanceof AxiosError) {

@@ -35,8 +35,6 @@ const ListingCard: FC<IListingCard> = ({
 }) => {
     const listing: TListing | undefined = data ?? reservation?.listing
 
-    const actionId = reservation?.id
-
     const { getByValue } = useCities()
     const location = getByValue(listing?.locationValue || '')
 
@@ -50,7 +48,7 @@ const ListingCard: FC<IListingCard> = ({
     return (
         <div className="col-span-1 cursor-pointer group">
             <Link
-                href={`/listings/${listing?.id}`}
+                href={`/apartment-details/${listing?.id}`}
                 className="flex flex-col gap-2 w-full"
             >
                 <div className="aspect-square w-full relative overflow-hidden rounded-xl">

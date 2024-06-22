@@ -16,7 +16,7 @@ interface IPropertiesClient {
     currentUser?: SafeUser | null
 }
 
-const PropertiesClient: FC<IPropertiesClient> = ({ currentUser }) => {
+export const UserRentalsClient: FC<IPropertiesClient> = ({ currentUser }) => {
     const { data: listings, isLoading } = useGetUserListingsById(
         currentUser?.id || ''
     )
@@ -50,4 +50,3 @@ const PropertiesClient: FC<IPropertiesClient> = ({ currentUser }) => {
     )
 }
 
-export default PropertiesClient

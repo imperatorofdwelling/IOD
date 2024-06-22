@@ -1,6 +1,6 @@
 import EmptyState from 'shared/ui/EmptyState'
 import { getCurrentUser } from 'shared/services/server-actions'
-import TripsClient from './TripsClient'
+import { UserReservationsClient } from './UserReservationsClient'
 
 const TripsPage = async () => {
     const currentUser = await getCurrentUser()
@@ -11,7 +11,7 @@ const TripsPage = async () => {
         )
     }
 
-    return <TripsClient currentUser={currentUser} />
+    return <UserReservationsClient currentUser={currentUser} />
 }
 
 export default TripsPage

@@ -2,19 +2,19 @@
 import prisma from '@/libs/prismadb'
 
 interface IParams {
-    listingId?: string
+    apartmentId?: string
     userId?: string
     authorId?: string
 }
 
 export const getReservations = async (params: IParams) => {
     try {
-        const { listingId, userId, authorId } = params
+        const { apartmentId, userId, authorId } = params
 
         const query: any = {}
 
-        if (listingId) {
-            query.listingId = listingId
+        if (apartmentId) {
+            query.listingId = apartmentId
         }
 
         if (userId) {

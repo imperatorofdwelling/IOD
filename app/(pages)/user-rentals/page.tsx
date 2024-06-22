@@ -1,5 +1,5 @@
 import EmptyState from 'shared/ui/EmptyState'
-import PropertiesClient from './PropertiesClient'
+import { UserRentalsClient } from './UserRentalsClient'
 import {
     getCurrentUser,
     getListingsUserId,
@@ -20,7 +20,7 @@ const PropertiesPage = async () => {
         return <EmptyState title="Нет  квартир" />
     }
 
-    return <PropertiesClient currentUser={currentUser} />
+    return <UserRentalsClient currentUser={currentUser} />
 }
 
 export default PropertiesPage

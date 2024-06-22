@@ -6,9 +6,10 @@ import ListingInfo from 'shared/ui/listings/ListingInfo'
 import ListingReservation from 'shared/ui/listings/ListingReservation'
 import type { SafeListing, SafeReservation, SafeUser } from '@/types'
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
-import { useEffect, useMemo, useState, type FC } from 'react'
+import { useEffect, useMemo, useRef, useState, type FC } from 'react'
 import { Range } from 'react-date-range'
 import { useMutationCreateReservationById } from 'shared/services/hooks'
+import toast from 'react-hot-toast'
 
 const initialDateRange = {
     startDate: new Date(),
@@ -16,7 +17,7 @@ const initialDateRange = {
     key: 'selection',
 }
 
-interface IListingClient {
+interface IApartmentDetails {
     reservations?: SafeReservation[]
     listing: SafeListing & {
         user: SafeUser
@@ -25,7 +26,7 @@ interface IListingClient {
     apartmentId?: string
 }
 
-const ListingClient: FC<IListingClient> = ({
+export const ApartmentDetailsClient: FC<IApartmentDetails> = ({
     listing,
     reservations = [],
     currentUser,
@@ -113,5 +114,3 @@ const ListingClient: FC<IListingClient> = ({
         </Container>
     )
 }
-
-export default ListingClient

@@ -4,18 +4,18 @@ import {
     getReservations,
 } from 'shared/services/server-actions'
 import EmptyState from 'shared/ui/EmptyState'
-import ListingClient from './listingClient'
+import { ApartmentDetailsClient } from './ApartmentDetailsClient'
 
 interface IParams {
-    listingId?: string
+    apartmentId?: string
 }
 
 const ListingPage = async ({ params }: { params: IParams }) => {
-    const { listingId } = params
+    const { apartmentId } = params
 
     const [listingResult, currentUserResult, reservationsResult] =
         await Promise.all([
-            getDetailApartmentById(listingId),
+            getDetailApartmentById(apartmentId),
             getCurrentUser(),
             getReservations(params),
         ])
@@ -25,8 +25,8 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     }
 
     return (
-        <ListingClient
-            apartmentId={listingId}
+        <ApartmentDetailsClient
+            apartmentId={apartmentId}
             listing={listingResult}
             currentUser={currentUserResult}
             reservations={reservationsResult}

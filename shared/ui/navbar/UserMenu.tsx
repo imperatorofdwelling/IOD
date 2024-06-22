@@ -88,11 +88,13 @@ const UserMenu: FC<IUserMenu> = ({ currentUser }) => {
                         {currentUser ? (
                             <>
                                 <MenuItem
-                                    onClick={() => router.push('/trips')}
+                                    onClick={() =>
+                                        router.push('/user-reservations')
+                                    }
                                     label="Забронировано"
                                 />
                                 <MenuItem
-                                    onClick={() => router.push('/properties')}
+                                    onClick={() => router.push('/user-rentals')}
                                     label="Мои объявления"
                                 />
                                 <MenuItem
