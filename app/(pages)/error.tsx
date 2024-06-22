@@ -3,14 +3,14 @@
 import { useEffect } from 'react'
 import EmptyState from '../../shared/ui/EmptyState'
 interface IError {
-  error: Error
+    error: Error
 }
 
 const ErrorState: React.FC<IError> = ({ error }) => {
-  useEffect(() => {
-    console.error(error)
-  }, [error])
-  return <EmptyState title="Упс..." subtitle="Что-то пошло не так" />
+    useEffect(() => {
+        console.error(error)
+    }, [error])
+    return <EmptyState title="Упс..." subtitle="Что-то пошло не так" />
 }
 
 export default ErrorState

@@ -3,9 +3,7 @@ import toast from 'react-hot-toast'
 import { $axios } from 'shared/axios'
 import { QueryKeys } from 'shared/consts/queryKeys'
 
-/**
- * Удаление созданной пользователем квартиры
- */
+/** Удаление созданной пользователем квартиры */
 export const useMutationDeleteApartamentById = () => {
     const queryClient = useQueryClient()
 
