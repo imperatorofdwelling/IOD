@@ -4,7 +4,6 @@ import type { SafeUser } from '@/types'
 import Heading from 'shared/ui/Heading'
 import ListingCard from 'shared/ui/listings/ListingCard'
 import Container from 'shared/ui/Container'
-import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import { Loader } from 'shared/ui/Loader'
 import {
@@ -31,23 +30,19 @@ const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
 
     if (isError) {
         return (
-            <ClientOnly>
-                <EmptyState
-                    title="Ошибка получения данных"
-                    subtitle="Пожалуйста, обратитесь в службу поддержки или попробуйте позже."
-                />
-            </ClientOnly>
+            <EmptyState
+                title="Ошибка получения данных"
+                subtitle="Пожалуйста, обратитесь в службу поддержки или попробуйте позже."
+            />
         )
     }
 
     if (!reservationsData?.length && !isLoading) {
         return (
-            <ClientOnly>
-                <EmptyState
-                    title="Нет бронированных квартир"
-                    subtitle="Пожалуйста создайте бронь"
-                />
-            </ClientOnly>
+            <EmptyState
+                title="Нет бронированных квартир"
+                subtitle="Пожалуйста создайте бронь"
+            />
         )
     }
 
@@ -74,7 +69,7 @@ const TripsClient: React.FC<TripsClientProps> = ({ currentUser }) => {
                     <ListingCard
                         key={reservation.id}
                         reservation={reservation}
-                        actionLabel="Cancel reservation"
+                        actionLabel="Отменить бронирование"
                         currentUser={currentUser}
                         onAction={() => mutate(reservation.id)}
                         disabled={isPending}

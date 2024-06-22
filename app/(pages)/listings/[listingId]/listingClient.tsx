@@ -22,6 +22,7 @@ interface IListingClient {
         user: SafeUser
     }
     currentUser: SafeUser | null
+    apartmentId?: string
 }
 
 const ListingClient: FC<IListingClient> = ({
@@ -101,6 +102,9 @@ const ListingClient: FC<IListingClient> = ({
                                 onSubmit={onCreateReservation}
                                 disabled={isPending}
                                 disabledDates={disabledDates}
+                                buttonLabel={
+                                    isPending ? 'Бронируем...' : 'Забронировать'
+                                }
                             />
                         </div>
                     </div>

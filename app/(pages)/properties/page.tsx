@@ -1,5 +1,4 @@
 import EmptyState from 'shared/ui/EmptyState'
-import ClientOnly from 'shared/ui/ClientOnly'
 import PropertiesClient from './PropertiesClient'
 import {
     getCurrentUser,
@@ -11,30 +10,17 @@ const PropertiesPage = async () => {
 
     if (!currentUser) {
         return (
-            <ClientOnly>
-                <EmptyState
-                    title="Не авторизован"
-                    subtitle="Пожалуйста войдите"
-                />
-            </ClientOnly>
+            <EmptyState title="Не авторизован" subtitle="Пожалуйста войдите" />
         )
     }
 
     const listings = await getListingsUserId(currentUser.id)
 
-    if (listings.length === 0) {
-        return (
-            <ClientOnly>
-                <EmptyState title="Нет  квартир" />
-            </ClientOnly>
-        )
+    if (!listings.length) {
+        return <EmptyState title="Нет  квартир" />
     }
 
-    return (
-        <ClientOnly>
-            <PropertiesClient currentUser={currentUser} />
-        </ClientOnly>
-    )
+    return <PropertiesClient currentUser={currentUser} />
 }
 
 export default PropertiesPage

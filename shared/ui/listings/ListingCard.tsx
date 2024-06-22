@@ -85,7 +85,6 @@ const ListingCard: FC<IListingCard> = ({
                         small
                         label={actionLabel}
                         onClick={(e) => {
-                            e.stopPropagation()
                             e.preventDefault()
                             onAction()
                         }}

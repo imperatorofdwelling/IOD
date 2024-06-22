@@ -6,6 +6,7 @@ import Calendar from '../inputs/Calendar'
 import Button from '../Button'
 import { ICreatePayment, YooCheckout } from '@a2seven/yoo-checkout'
 import { v4 as uuidv4 } from 'uuid'
+
 interface IListingReservation {
     price: number
     dateRange: Range
@@ -14,6 +15,7 @@ interface IListingReservation {
     onSubmit: () => void
     disabled: boolean
     disabledDates: Date[]
+    buttonLabel?: string
 }
 
 const ListingReservation: React.FC<IListingReservation> = ({
@@ -24,6 +26,7 @@ const ListingReservation: React.FC<IListingReservation> = ({
     onSubmit,
     disabled,
     disabledDates,
+    buttonLabel = 'Забронировать',
 }) => {
     const checkout = new YooCheckout({
         shopId: process.env.SHOP_ID || '333233',
@@ -74,7 +77,7 @@ const ListingReservation: React.FC<IListingReservation> = ({
             <div className="p-4">
                 <Button
                     disabled={disabled}
-                    label="Забронировать"
+                    label={buttonLabel}
                     onClick={onSubmit}
                 />
             </div>

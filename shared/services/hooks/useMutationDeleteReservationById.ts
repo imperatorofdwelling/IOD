@@ -3,6 +3,9 @@ import toast from 'react-hot-toast'
 import { $axios, AxiosError } from 'shared/axios'
 import { QueryKeys } from 'shared/consts/queryKeys'
 
+/**
+ * Отмена бронирования квартиры
+ */
 export const useMutationDeleteReservationById = () => {
     const queryClient = useQueryClient()
 

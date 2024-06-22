@@ -1,9 +1,8 @@
 import {
     getCurrentUser,
-    getListingById,
+    getDetailApartmentById,
     getReservations,
 } from 'shared/services/server-actions'
-import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import ListingClient from './listingClient'
 
@@ -16,27 +15,22 @@ const ListingPage = async ({ params }: { params: IParams }) => {
 
     const [listingResult, currentUserResult, reservationsResult] =
         await Promise.all([
-            getListingById(listingId),
+            getDetailApartmentById(listingId),
             getCurrentUser(),
             getReservations(params),
         ])
 
     if (!listingResult) {
-        return (
-            <ClientOnly>
-                <EmptyState />
-            </ClientOnly>
-        )
+        return <EmptyState />
     }
 
     return (
-        <ClientOnly>
-            <ListingClient
-                currentUser={currentUserResult}
-                listing={listingResult}
-                reservations={reservationsResult}
-            />
-        </ClientOnly>
+        <ListingClient
+            apartmentId={listingId}
+            listing={listingResult}
+            currentUser={currentUserResult}
+            reservations={reservationsResult}
+        />
     )
 }
 

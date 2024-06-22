@@ -1,4 +1,3 @@
-import ClientOnly from 'shared/ui/ClientOnly'
 import EmptyState from 'shared/ui/EmptyState'
 import FavoritesClient from './FavoritesClient'
 import {
@@ -14,20 +13,14 @@ const FavoritesPage = async () => {
 
     if (!listings) {
         return (
-            <ClientOnly>
-                <EmptyState
-                    title="Нет избранных"
-                    subtitle="Пожалуйста, добавьте квартиру в избранное"
-                />
-            </ClientOnly>
+            <EmptyState
+                title="Нет избранных"
+                subtitle="Пожалуйста, добавьте квартиру в избранное"
+            />
         )
     }
 
-    return (
-        <ClientOnly>
-            <FavoritesClient listings={listings} currentUser={currentUser} />
-        </ClientOnly>
-    )
+    return <FavoritesClient listings={listings} currentUser={currentUser} />
 }
 
 export default FavoritesPage

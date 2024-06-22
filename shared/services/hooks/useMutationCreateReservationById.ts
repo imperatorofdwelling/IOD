@@ -11,6 +11,9 @@ interface Body {
     listingId?: string
 }
 
+/**
+ * Бронирование квартиры
+ */
 export const useMutationCreateReservationById = () => {
     const router = useRouter()
     const queryClient = useQueryClient()

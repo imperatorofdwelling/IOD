@@ -1,6 +1,7 @@
+'use server'
 import prisma from '@/libs/prismadb'
 
-export const getListingById = async (listingId?: string) => {
+export const getDetailApartmentById = async (listingId?: string) => {
     try {
         const listing = await prisma.listing.findUnique({
             where: {
@@ -24,6 +25,8 @@ export const getListingById = async (listingId?: string) => {
             },
         }
     } catch (error: any) {
-        throw new Error(error.message)
+        console.log('Ошибка в getDetailApartmentById')
+        console.log(typeof error?.message === 'string' && error?.message)
+        return null
     }
 }

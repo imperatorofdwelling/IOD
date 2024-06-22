@@ -1,5 +1,4 @@
 import EmptyState from 'shared/ui/EmptyState'
-import ClientOnly from 'shared/ui/ClientOnly'
 import { getCurrentUser } from 'shared/services/server-actions'
 import TripsClient from './TripsClient'
 
@@ -8,20 +7,11 @@ const TripsPage = async () => {
 
     if (!currentUser) {
         return (
-            <ClientOnly>
-                <EmptyState
-                    title="Не авторизован"
-                    subtitle="Пожалуйста войдите"
-                />
-            </ClientOnly>
+            <EmptyState title="Не авторизован" subtitle="Пожалуйста войдите" />
         )
     }
 
-    return (
-        <ClientOnly>
-            <TripsClient currentUser={currentUser} />
-        </ClientOnly>
-    )
+    return <TripsClient currentUser={currentUser} />
 }
 
 export default TripsPage
