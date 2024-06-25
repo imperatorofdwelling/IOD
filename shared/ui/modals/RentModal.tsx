@@ -97,7 +97,7 @@ const RentModal = () => {
             return 'Создать'
         }
 
-        console.log(step)
+        // console.log(step)
         return 'Далее'
     }, [step])
 
