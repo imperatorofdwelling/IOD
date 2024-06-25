@@ -48,7 +48,8 @@ const ListingInfo: React.FC<IListingInfo> = ({
             {coorLat && coorLon && (
                 <YandexMap
                     style={{
-                        width: '500px',
+                        maxWidth: '500px',
+                        width: '100%',
                         height: '350px',
                         borderRadius: '0.75rem',
                         overflow: 'hidden',
