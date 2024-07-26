@@ -3,7 +3,7 @@ import Container from 'shared/ui/Container'
 import EmptyState from 'shared/ui/EmptyState'
 import ListingCard from 'shared/ui/listings/ListingCard'
 
-async function Home() {
+const Home = async () => {
     const [ligstings, currentUser] = await Promise.all([
         getListings(),
         getCurrentUser(),
@@ -29,5 +29,4 @@ async function Home() {
         </Container>
     )
 }
-
 export default Home
