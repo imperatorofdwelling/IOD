@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import '../styles/globals.css'
-import Navbar from 'shared/ui/navbar/Navbar'
-import ClientOnly from 'shared/ui/ClientOnly'
+import '../styles/root.css'
 import RegisterModal from 'shared/ui/modals/RegisterModal'
 import ToasterProvider from '../providers/ToasterProvider'
 import LoginModal from 'shared/ui/modals/LoginModal'
 import RentModal from 'shared/ui/modals/RentModal'
 import SearchModal from 'shared/ui/modals/SearchModal'
 import { TanStackQueryProvider } from '@/providers/TanStackQueryProvider'
-import Script from 'next/script'
 import { YandexMapProvider } from '@/providers/YandexMapProvider'
+import { ILayout } from 'shared/types'
+import { Suspense } from '@/shared/ui/Suspense'
 
 const font = Nunito({ subsets: ['latin'] })
 
@@ -19,28 +19,24 @@ export const metadata: Metadata = {
     description: 'Booking application',
 }
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+const RootLayout = ({ children }: ILayout) => {
     return (
-        <html lang="en">
+        <html lang="ru">
             <body className={font.className}>
-                <TanStackQueryProvider>
-                    <YandexMapProvider>
-                        <ClientOnly>
+                <Suspense>
+                    <TanStackQueryProvider>
+                        <YandexMapProvider>
                             <ToasterProvider />
                             <RegisterModal />
                             <RentModal />
                             <LoginModal />
                             <SearchModal />
-                            <Navbar />
-                        </ClientOnly>
-                        <div className="pb-20 pt-28">{children}</div>
-                    </YandexMapProvider>
-                </TanStackQueryProvider>
+                            {children}
+                        </YandexMapProvider>
+                    </TanStackQueryProvider>
+                </Suspense>
             </body>
         </html>
     )
 }
+export default RootLayout

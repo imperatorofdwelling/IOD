@@ -9,7 +9,7 @@ import {
     useGetUserListingsById,
     useMutationDeleteApartamentById,
 } from 'shared/services/hooks'
-import Loader from '../loading'
+import Loader from '../../loading'
 import EmptyState from 'shared/ui/EmptyState'
 import toast from 'react-hot-toast'
 

@@ -1,0 +1,18 @@
+.btn {
+    background: black;
+    font-weight: 500;
+    font-size: var(--font-size-300);
+    color: white;
+    width: 120px;
+    height: 50px;
+
+    &.var1 {
+        border: 1px solid white;
+        border-radius: 50px;
+    }
+
+    &.var2 {
+        border-radius: 5px;
+        border: 1px solid white;
+    }
+}

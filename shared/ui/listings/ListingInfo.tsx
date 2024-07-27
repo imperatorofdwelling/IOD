@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import useCities from 'shared/hooks/useCities'
 import { SafeUser } from '@/types'
 import Avatar from '../Avatar'
-import { YandexMap } from '../YandexMap'
+import { YandexMap } from '../../../widgets/YandexMap'
 import { Loader } from '../Loader'
 
 interface IListingInfo {
