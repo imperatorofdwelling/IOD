@@ -1,0 +1,35 @@
+.footer {
+    display: flex;
+    height: 450px;
+    background: #111111;
+    color: #fff;
+    padding: 65px 0;
+    font-size: var(--font-size-300);
+}
+.logo {
+    margin-bottom: 46px;
+}
+
+.sublogo {
+    span {
+        font-weight: 500;
+    }
+    font-weight: 300;
+}
+
+.info {
+    display: flex;
+    gap: 290px;
+}
+.left-info {
+    width: 400px;
+    line-height: 1;
+}
+.right-info {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    a {
+        display: block;
+    }
+}

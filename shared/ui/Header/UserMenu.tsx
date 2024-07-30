@@ -8,7 +8,7 @@ import {
     useState,
     type FC,
 } from 'react'
-import MenuItem from 'shared/ui/navbar/MenuItem'
+import MenuItem from 'shared/ui/Header/MenuItem'
 import useRegisterModal from 'shared/hooks/useRegisterModal'
 import useLoginModal from 'shared/hooks/useLoginModal'
 import { signOut } from 'next-auth/react'

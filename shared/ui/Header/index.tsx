@@ -4,9 +4,9 @@ import UserMenu from './UserMenu'
 import Logo from './Logo'
 import { getCurrentUser } from 'shared/services/server-actions'
 
-const Navbar = async () => {
+export const Header = async () => {
     const currentUser = await getCurrentUser()
-
+    
     return (
         <div className="fixed w-full bg-white dark:bg-black z-10 shadow-sm">
             <div className="py-4 border-b-[1px]">
@@ -21,5 +21,3 @@ const Navbar = async () => {
         </div>
     )
 }
-
-export default Navbar
