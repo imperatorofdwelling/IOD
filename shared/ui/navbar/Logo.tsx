@@ -10,7 +10,7 @@ const Logo = () => {
       className="hidden md:block cursor-pointer"
       height={50}
       width={50}
-      src="/images/logo.svg"
+      src="/images/logo-light.svg"
       onClick={() => router.push('/')}
     />
   )

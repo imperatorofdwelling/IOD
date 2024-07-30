@@ -63,7 +63,7 @@ const UserMenu: FC<IUserMenu> = ({ currentUser }) => {
                     </div>
                 ) : (
                     <div
-                        className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+                        className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-400 transition cursor-pointer"
                         onClick={() => {
                             registerModal.onOpen()
                         }}
@@ -84,7 +84,7 @@ const UserMenu: FC<IUserMenu> = ({ currentUser }) => {
 
             {isOpen && (
                 <div className="HeaderUserModal absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
-                    <div className="flex flex-col cursor-pointer">
+                    <div className="flex flex-col cursor-pointer bg-white dark:bg-black">
                         {currentUser ? (
                             <>
                                 <MenuItem

@@ -75,3 +75,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dark-mode {
+  background-color: black;
+}
+
+.light-mode {
+  background-color: white;
+}
+
+.rdrCalendarWrapper {
+  width: 100%;
+}
+
+.rdrMonth {
+  width: 100%!important;
+}
