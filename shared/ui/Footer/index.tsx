@@ -1,15 +1,16 @@
 import s from './s.module.scss'
 import Logo from '@/shared/assets/logo.svg'
 import { Container } from '@/shared/ui/SizesContainer'
-import Link from 'next/link'
+import { FooterLink } from './FooterLink'
+import { cn } from '@/shared/utils/cn'
 
 const Footer = () => {
     return (
-        <footer className={`${s.footer} border-2 dark:bg-black`}>
+        <footer className={cn(s.footer, 'border-2 dark:bg-black')}>
             <Container className={s.info}>
+                <Logo className={s.logo} />
                 <div className={s['left-info']}>
-                    <Logo className={s.logo} />
-                    <div className={`${s.sublogo} leading-normal`}>
+                    <div className={cn(s.sublogo, 'leading-normal')}>
                         <p>
                             <span>Imperator Of Dwelling</span>
                         </p>
@@ -20,10 +21,10 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={s['right-info']}>
-                    <Link href="/offer">Условия предоставления услуг</Link>
-                    <a href="#">Получение товара после оплаты</a>
-                    <a href="#">О компании</a>
-                    <a href="#">Работа</a>
+                    <FooterLink href="/offer">Условия предоставления услуг</FooterLink>
+                    <FooterLink href="#">Получение товара после оплаты</FooterLink>
+                    <FooterLink href="#">О компании</FooterLink>
+                    <FooterLink href="#">Работа</FooterLink>
                 </div>
             </Container>
         </footer>
