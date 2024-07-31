@@ -55,7 +55,7 @@ const ListingCard: FC<IListingCard> = ({
                     <Image
                         alt="Listing Card"
                         src={listing?.imageSrc || ''}
-                        className="object-cover h-full w-full group-hover:scale-110 transition"
+                        className="object-cover h-full w-full group-hover:scale-100 transition"
                         fill
                     />
                     <div className="absolute top-3 right-3 z-100">

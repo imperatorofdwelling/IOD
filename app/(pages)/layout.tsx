@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: ILayout) => {
     return (
-        <html lang="ru">
-            <body className={font.className}>
+        <html lang="en">
+            <body className={`${font.className} dark`}>
                 <Suspense>
                     <TanStackQueryProvider>
                         <YandexMapProvider>

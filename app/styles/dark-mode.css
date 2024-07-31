@@ -1,0 +1,58 @@
+/* dark-mode.css */
+.rdrCalendarWrapper {
+  background-color: black;
+  color: #ffffff;
+}
+
+.rdrDayDisabled,
+.rdrDayDisabled span,
+.rdrDayPassive,
+.rdrDayPassive span {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.rdrDayNumber span {
+  color: white;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  border: 1px solid #ffffff;
+}
+
+.rdrDayDisabled {
+  background-color: rgb(51 51 51);
+}
+
+.rdrDaySelected,
+.rdrDayStartOfRange,
+.rdrDayEndOfRange {
+  background: #333333;
+}
+
+.rdrDaySelected span,
+.rdrDayStartOfRange span,
+.rdrDayEndOfRange span {
+  color: #ffffff;
+}
+
+.rdrMonthAndYearPickers select {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.rdrDateDisplayItem {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+/* .rdrYearPicker option {
+  background-color: black;
+}
+*/
+.rdrMonthAndYearPickers select:hover {
+  background-color: #5b5a5a;
+} 
+
+/* .css-163ge8a-control {
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity))!important;
+} */

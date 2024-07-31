@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1339.58 1339.58">
+  <defs>
+    <style>
+      .cls-1 {
+      fill: none;
+      stroke: #fff;
+      stroke-miterlimit: 10;
+      stroke-width: 100px;
+      }
+    </style>
+  </defs>
+  <g id="GoldenRatio" data-name="GoldenRatio">
+    <line class="cls-1" x1="1052.98" y1="669.79" x2="1052.7" y2="669.79" />
+    <path class="cls-1"
+      d="m669.79,50C327.49,50,50,327.49,50,669.79s277.49,619.79,619.79,619.79,619.79-277.49,619.79-619.79S1012.09,50,669.79,50Zm-.14,1002.85c-211.56,0-383.05-171.5-383.05-383.05h766.1c0,211.55-171.5,383.05-383.05,383.05Z" />
+    <path class="cls-1"
+      d="m1052.7,669.79c0,211.55-171.5,383.05-383.05,383.05s-383.05-171.5-383.05-383.05h766.1Z" />
+    <line class="cls-1" x1="286.6" y1="377.19" x2="1052.98" y2="377.19" />
+  </g>
+</svg>

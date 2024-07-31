@@ -21,16 +21,17 @@ const CitySelect: React.FC<CitySelect> = ({ value, onChange }) => {
   return (
     <div>
       <Select
+        className='text-neutral-900'
         value={value}
         placeholder="Город"
         isClearable
         options={getAll()}
         onChange={(value) => onChange(value as CitiesSelectValue)}
         formatOptionLabel={(option: any) => (
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row text-black items-center gap-3">
             <div>
               {option.value},
-              <span className="text-neutral-500 ml-1">{option.region}</span>
+              <span className="text-neutral-900 ml-1 text-black dark:text-black">{option.region}</span>
             </div>
           </div>
         )}

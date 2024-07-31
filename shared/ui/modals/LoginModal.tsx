@@ -87,13 +87,13 @@ const LoginModal = () => {
     <div className="flex flex-col gap-4 mt-3">
       <hr />
       <Button
-        outline
+        outline={false}
         label="Войти с помощью Yandex"
         icon={FaYandex}
         onClick={() => signIn('yandex')}
       />
       <Button
-        outline
+        outline={false}
         label="Войти с помощью Google"
         icon={FcGoogle}
         onClick={() => signIn('google')}

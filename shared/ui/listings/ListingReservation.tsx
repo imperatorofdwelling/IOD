@@ -59,7 +59,7 @@ const ListingReservation: React.FC<IListingReservation> = ({
         }
     }
     return (
-        <div className="bg-white rounded-xl border-[1px] border-neutral-200 overflow-hidden">
+        <div className="bg-white dark:bg-black rounded-xl border-[1px] border-neutral-200 overflow-hidden">
             <div className="">
                 <div className="text-2xl font-semibold flex flex-row items-center gap-1 p-4">
                     <BiRuble size={24} />
