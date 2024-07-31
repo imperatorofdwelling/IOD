@@ -1,13 +1,37 @@
 .footer {
     display: flex;
-    height: 450px;
     background: #111111;
     color: #fff;
-    padding: 65px 0;
-    font-size: var(--font-size-300);
+    padding: 20px 10px;
+    font-size: var(--font-size-200);
 }
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    line-height: 1.5;
+
+    @media screen and (max-width: 590px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
 .logo {
-    margin-bottom: 46px;
+    grid-column: 1 / 2;
+}
+
+.left-info {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.right-info {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2 / 2;
 }
 
 .sublogo {
@@ -17,19 +41,5 @@
     font-weight: 300;
 }
 
-.info {
-    display: flex;
-    gap: 290px;
-}
-.left-info {
-    width: 400px;
-    line-height: 1;
-}
-.right-info {
-    display: flex;
-    flex-direction: column;
-    gap: 27px;
-    a {
-        display: block;
-    }
-}
+
+

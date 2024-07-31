@@ -1,0 +1,31 @@
+.link{
+  display: flex;
+  width: max-content;
+  color: var(--text-color-1);
+  overflow: hidden;
+  gap:10px;
+}
+
+.label{
+  position: relative;
+  &::after{
+    transition: .3s width;
+    position: absolute;
+    content: '';
+    height: 2px;
+    bottom: 0;
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+  }
+
+  &:active::after{
+    background: blue;
+  }
+
+  &:hover::after{
+
+    width: 100%;
+  }
+}
