@@ -4,6 +4,7 @@ import ru from 'date-fns/locale/ru'
 import { DateRange, Range, RangeKeyDict } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
+import '../../../app/styles/dark-mode.css'
 
 interface ICalendar {
   value: Range

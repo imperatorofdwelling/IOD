@@ -26,7 +26,7 @@ const Input: React.FC<IInput> = ({
   return (
     <div className="w-full relative">
       {formatPrice && (
-        <BiRuble size={24} className="text-neutral-700 absolute top-5 left-2" />
+        <BiRuble size={24} className="text-gray-700 absolute top-5 left-2" />
       )}
       <input
         id={id}
@@ -34,10 +34,10 @@ const Input: React.FC<IInput> = ({
         {...register(id, { required })}
         placeholder=" "
         type={type}
-        className={`peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ${
+        className={`peer w-full p-4 pt-6 font-light bg-neutral-900 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ${
           formatPrice ? 'pl-9' : 'pl-4'
         } ${errors[id] ? 'border-red-500' : 'border-neutral-300'} ${
-          errors[id] ? 'focus:border-red-500' : 'focus:border-black'
+          errors[id] ? 'focus:border-red-500' : 'focus:border-white focus:border-2'
         }`}
       />
       <label

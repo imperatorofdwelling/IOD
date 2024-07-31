@@ -5,11 +5,11 @@ import Link from 'next/link'
 
 const Footer = () => {
     return (
-        <footer className={s.footer}>
+        <footer className={`${s.footer} border-2 dark:bg-black`}>
             <Container className={s.info}>
                 <div className={s['left-info']}>
                     <Logo className={s.logo} />
-                    <div className={s.sublogo}>
+                    <div className={`${s.sublogo} leading-normal`}>
                         <p>
                             <span>Imperator Of Dwelling</span>
                         </p>
