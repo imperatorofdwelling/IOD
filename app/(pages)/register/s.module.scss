@@ -1,0 +1,42 @@
+ .form_group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .form_group label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .form_group label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    background: #006BE6;
+    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  
+  .form_group input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    width: 5px;
+    height: 12px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  

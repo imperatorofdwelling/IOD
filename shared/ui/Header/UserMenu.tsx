@@ -15,6 +15,7 @@ import { signOut } from 'next-auth/react'
 import { type SafeUser } from '@/types'
 import useRentModal from 'shared/hooks/useRentModal'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 interface IUserMenu {
     currentUser?: SafeUser | null
@@ -112,12 +113,14 @@ const UserMenu: FC<IUserMenu> = ({ currentUser }) => {
                         ) : (
                             <>
                                 <MenuItem
-                                    onClick={loginModal.onOpen}
+                                    // onClick={loginModal.onOpen}
                                     label="Войти"
+                                    href='/login'
                                 />
                                 <MenuItem
-                                    onClick={registerModal.onOpen}
+                                    // onClick={registerModal.onOpen}
                                     label="Регистрация"
+                                    href='/register'
                                 />
                             </>
                         )}

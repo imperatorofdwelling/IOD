@@ -11,6 +11,7 @@ import { TanStackQueryProvider } from '@/providers/TanStackQueryProvider'
 import { YandexMapProvider } from '@/providers/YandexMapProvider'
 import { ILayout } from 'shared/types'
 import { Suspense } from '@/shared/ui/Suspense'
+import "tw-elements-react/dist/css/tw-elements-react.min.css";
 
 const font = Nunito({ subsets: ['latin'] })
 

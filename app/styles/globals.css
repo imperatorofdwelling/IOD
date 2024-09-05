@@ -65,6 +65,14 @@
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
   }
+  @font-face {
+    font-family: 'SFProText';
+    src: url('/font/SFProText.ttf');
+  }
+  @font-face {
+    font-family: 'SFProText_Bold';
+    src: url('/font/SFProText_Bold.ttf');
+  }
 }
 
 @layer base {
