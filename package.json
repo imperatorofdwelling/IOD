@@ -44,11 +44,12 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "^20",
+    "@types/node": "^20.16.5",
     "@types/react": "^18",
     "@types/react-date-range": "^1.4.9",
     "@types/react-dom": "^18",
     "@types/uuid": "^9.0.8",
+    "@types/yandex-maps": "^2.1.36",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
