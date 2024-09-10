@@ -1,0 +1,140 @@
+.form {
+    padding: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #000000;
+    height: 852px;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 11px;
+  }
+  
+ 
+  .goBack {
+    align-self: flex-start;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #1B1B1C;
+  }
+  
+  .backBtn {    
+    cursor: pointer;
+    padding: 15px;
+  }
+  
+  .backBtn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .searchBar {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+    border: #1B1B1C;      
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);   
+  }
+  
+  .cityInput {
+    width: 100%;
+    padding: 15px 0px 15px 43px; 
+    font-size: 16px;
+    background-color: #131313;
+    border-radius: 8px;
+    box-sizing: border-box;     
+    color: #ffff;
+    outline: none;
+  }
+  
+  .cityList {
+    list-style-type: none;
+    padding: 0;
+    width: 100%; 
+    border: none;
+  }
+  
+  .cityItem {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #131313;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #ffff;
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #131313;
+  }
+  
+  .cityItem:not(:last-child) {
+    border-bottom: 1px solid #131313;
+  }
+  
+ 
+  .locationIcon {
+    margin-right: 8px;
+    background-color: #131313;
+    padding: 9px;
+    border-radius: 8px;
+  }
+  
+  .selected {
+    color: #ffff;
+  }
+  
+  .checkmarkIcon {
+    margin-left: auto;
+  }
+  
+  
+@media (min-width: 768px) {
+  .form {
+    padding: 32px;
+    max-width: 800px; 
+    margin: 0 auto;
+  }
+  
+  .container {
+    gap: 16px; 
+  }
+  
+  .goBack {
+    margin-bottom: 24px; 
+  }
+  
+  .backBtn {
+    padding: 20px; 
+  }
+  
+  .searchBar {
+    margin-bottom: 24px; 
+  }
+  
+  .searchIcon {
+    left: 15px; 
+  }
+  
+  .cityInput {
+    padding: 15px 0px 15px 60px; 
+    font-size: 18px;
+  }
+  
+  .cityItem {
+    padding: 16px; 
+    font-size: 18px;
+  }
+  
+  .locationIcon {
+    padding: 12px; 
+  }
+}
