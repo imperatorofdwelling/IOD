@@ -112,14 +112,12 @@ const UserMenu: FC<IUserMenu> = ({ currentUser }) => {
                         ) : (
                             <>
                                 <MenuItem
-                                    // onClick={loginModal.onOpen}
                                     onClick={() =>
                                         router.push('/auth/login')
                                     }
                                     label="Войти"
                                 />
                                 <MenuItem
-                                    // onClick={registerModal.onOpen}
                                     onClick={() =>
                                         router.push('/auth/register')
                                     }

@@ -1,6 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
 import InputField from '@/shared/ui/components/InputField';
-import CheckboxWithLabel from '@/shared/ui/components/CheckboxWithLabel';
 import Button from '@/shared/ui/components/Button';
 import Divider from '@/shared/ui/components/Divider';
 
@@ -15,7 +15,9 @@ const SignUpPage: React.FC<SignUpPageProps> = () => {
   return (
     <main className="flex overflow-hidden flex-col pb-3 pl-6 pr-6 mx-auto w-full max-w-[480px]">
       <section className="flex flex-col justify-center mt-10 w-full">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7951d47dae5a15cbf8faa4483c59d219a07fed5d52fc6d5f06e8d4a9241e4831?placeholderIfAbsent=true&apiKey=6b438dbe2e8a48a5baec60fd6590cb02" alt="Sign Up Logo" className="object-contain w-16 aspect-square" />
+        <Image src="https://cdn.builder.io/api/v1/image/assets/TEMP/7951d47dae5a15cbf8faa4483c59d219a07fed5d52fc6d5f06e8d4a9241e4831?placeholderIfAbsent=true&apiKey=6b438dbe2e8a48a5baec60fd6590cb02"  
+        width={64} height={64} alt="Sign Up Logo" className="object-contain aspect-square" 
+        />
         <h1 className="mt-6 text-5xl font-bold text-white">Sign In</h1>
         <form className="flex flex-col mt-6 w-full">
           {inputFields.map((field, index) => (
