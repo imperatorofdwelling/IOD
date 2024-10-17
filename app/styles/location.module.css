@@ -1,0 +1,48 @@
+.firstBlock {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #131313;
+    color: #ffff;
+    padding:16px 24px;
+}
+
+.blurred {
+    filter: blur(1px);
+    transition: filter 0.3s ease-in-out; 
+}
+
+.locationContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+.location{
+    margin: 0;
+}
+.locationName {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {  
+    .location {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .firstBlock {
+        max-width: 768px;
+        padding: 40px;
+    }
+
+    .location {
+        font-size: 20px;
+    }
+
+    .locationContainer {
+        gap: 30px;
+    }
+}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { CityContext } from "../../context/CityContext";
 import styles from "../../styles/location.module.css";
-import Checkmark from "../../../public/checkmark-icon.svg";
+import Checkmark from "../../../public/citySelectionIcons/checkmark-icon.svg"
 
 interface LocationProps {
   isModalOpen: boolean;  // Указываем, что isModalOpen имеет тип boolean
