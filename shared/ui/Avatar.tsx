@@ -3,13 +3,14 @@
 import Image from 'next/image'
 
 interface IAvatar {
-  src: string | null | undefined
+  src: string | null | undefined,
+  className?: string | null | undefined
 }
 
-const Avatar: React.FC<IAvatar> = ({ src }) => {
+const Avatar: React.FC<IAvatar> = ({ src, className }) => {
   return (
     <Image
-      className="rounded-full"
+      className={`${className} rounded-full`}
       height={30}
       width={30}
       alt="Avatar"
