@@ -1,15 +1,11 @@
 'use client'
 import { type FC } from 'react'
-import Avatar from '@/shared/ui/Avatar';
 import { SafeUser } from '@/types'
-import Heading from '@/shared/ui/Heading';
-import Image from 'next/image';
 import {
     useGetUserListingsById,
     useMutationDeleteApartamentById,
 } from 'shared/services/hooks'
 
-import PersonalInfoItem from '@/shared/ui/PersonalInfoItem';
 import GoToBack from '@/shared/ui/GoToBack';
 import ContactDetailItem from '@/shared/ui/ContactDetailItem';
 

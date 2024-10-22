@@ -33,9 +33,9 @@ const GoToBack: React.FC<IButton> = ({
   };
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='relative flex items-center justify-center'>
       <div 
-        className='rounded-lg border border-soild border-[#1B1B1C] w-[48px] h-[48px] items-center justify-center flex bg-[#131313] cursor-pointer'
+        className='absolute left-0 rounded-lg border border-soild border-[#1B1B1C] w-[48px] h-[48px] items-center justify-center flex bg-[#131313] cursor-pointer'
         onClick={handleGoBack} // Attach the click handler here
       >
         <Image src={'/citySelectionIcons/arrow-left.svg'} width={15} height={15} alt='' />

@@ -6,9 +6,9 @@ import Footer from 'shared/ui/Footer'
 export default function OverviewLayout({ children }: ILayout) {
     return (
         <div>
-            <Header />
-                <div className="pb-20 pt-28">{children}</div>
-            <Footer />
+            {/* <Header /> */}
+                <div className="relative">{children}</div>
+            {/* <Footer /> */}
         </div>
     )
 }
