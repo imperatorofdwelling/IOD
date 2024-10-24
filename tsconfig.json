@@ -33,6 +33,6 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "tailwind.config.js"
-    ],
+, "app/(pages)/(overview)/user-profile/personal-info"    ],
     "exclude": ["node_modules"]
 }
