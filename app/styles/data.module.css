@@ -1,0 +1,269 @@
+.secondBlock{
+    background-color: #000000;
+    color: #ffff;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+.housesContainer, .datesContainer, .residentsContainer{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    background-color: #131313;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 19.5px;
+    color:#757575
+}
+
+.checkboxLabel{
+  color:#ffff
+}
+
+.selectionTitle{
+  margin-bottom: 12px;
+}
+
+.applyBtn{
+  background-color: #131313;
+  border-radius: 8px;
+  width: 100%;
+  color: #757575;
+  padding: 15px;
+  border: none;
+}
+
+
+.modalOverlay {    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#ffff
+  }
+  
+
+  .modal {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    z-index: 2; 
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);    
+    transform: translateY(100%);
+    animation: slideUp 0.3s forwards;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .blurred {
+    filter: blur(1px);
+    transition: filter 0.3s ease-in-out; 
+}
+
+  .checkboxGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+.iconWithText {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%; 
+  }
+  
+  .checkboxLabel input {
+    margin-left: auto; 
+  }
+  
+  .modalOverlay {    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  .modal {
+    background-color: #000000;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .checkboxLabel svg {
+    margin-right:10px;
+  }
+
+  .checkboxGroup{
+    margin:24px 0 50px 0;
+  }
+
+  .calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Задайте высоту родительского контейнера, например, 100% или нужную высоту */
+}
+
+.container {
+  display: flex;
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: center; /* Центрирование по горизонтали */
+  margin-bottom: 20px; /* Отступ снизу, можно изменить при необходимости */
+}
+
+.title{
+  margin: 0 0 48px 24px;
+  padding-top: 24px;
+  font-size: 1.2rem;
+}
+  
+  
+  .modalApplyButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #006BE6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .dateModalOverlay{
+    background-color: #000000;
+    color: #ffff;
+    border-radius: 16px 16px 0 0;    
+  }
+  /* CALENDAR */
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;  
+    background-color: #131313; 
+    width: 320px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding:24px;
+  }
+  
+   .header{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 20px; 
+    background-color: #131313;
+  }
+  
+  .prevNav, .nextNav{
+    background: none;
+    border: none;
+    padding:0;
+    display: flex;
+    align-items: center;
+  }
+  .nextNav{
+    rotate: 180deg;
+    margin-left: 42px;
+  }
+  
+  .prevNav{
+    margin-right: 42px;
+  }
+  
+  .dayPicker{
+    --rdp-accent-color:#006BE6; 
+    --rdp-accent-background-color:#183658;
+    --rdp-cell-size: 40px; 
+    margin-bottom: 20px;
+    background-color: #131313;
+  }
+
+  .bookingLabel{
+    padding:24px;
+  }
+
+ 
+   
+  .flexibleContainer {
+    display: flex; /* Оставляем flexbox для удобного расположения элементов */
+    align-items: flex-start; /* Элементы будут выравниваться по верхнему краю */
+    justify-content: flex-start; /* Выравнивание по левому краю */
+    margin-top: 16px; /* Отступ сверху, если нужно */
+    width: 100%; /* Добавляем ширину, чтобы элементы занимали все доступное пространство */
+    margin: 31px auto 56px 24px;
+  }
+  
+   
+  .flexibleContainer input {
+    margin-left: 8px;    
+    background: none;
+    border: solid 1.5px #585858;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .flexibleContainer label{
+    font-size: 1.1rem;
+    color:#C0C0C0
+  }
+
+  
+
+  @media (min-width: 1024px) {
+
+    .secondBlock{
+      max-width: 768px;
+    }
+    .modalOverlay {
+        justify-content: center;
+        align-items: center;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    .modal {
+        transform: none; 
+    }
+
+  .dateModalOverlay{
+    max-width: 768px;
+    margin: 0 auto;
+  }
+  .calendar{
+    width: 450px;
+  }
+
+}
