@@ -2,6 +2,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from 'next-auth/providers/google'
 import YandexProvider from 'next-auth/providers/yandex'
+import TwitterProvider from 'next-auth/providers/twitter'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
 
@@ -18,6 +19,10 @@ export const authOptions: AuthOptions = {
             clientId: process.env.YANDEX_CLIENT_ID!,
             clientSecret: process.env.YANDEX_CLIENT_SECRET!
         }),
+        TwitterProvider({
+            clientId: process.env.TWITTER_CLIENT_ID!,
+            clientSecret: process.env.TWITTER_CLIENT_SECRET!,
+          }),      
         CredentialsProvider({
             name: 'credentials',
             credentials: {
@@ -46,7 +51,7 @@ export const authOptions: AuthOptions = {
         })
     ],
     pages: {
-        signIn: '/',
+        signIn: '/auth/login',
     },
     debug: process.env.NODE_ENV === 'development',
     session: {

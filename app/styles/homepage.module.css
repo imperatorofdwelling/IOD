@@ -1,0 +1,92 @@
+.stateCardList {
+    padding: 24px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stateCard {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid #1b1b1c;
+    background-color: #131313;
+}
+
+.stateContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 700px;
+}
+
+.stateTitle {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.stateDuration {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.stateCount {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.stateClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hotelCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.hotelInfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.hotelInfoIndiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.hotelproperty {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hotelPropertyIndiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #ffffff;
+}
+.gray {
+    color: #757575;
+}

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { DayPicker, DateRange } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import styles from "../../styles/data.module.css"; 
-import HousesIcon from "@/public/homePageIcon/houses.svg"; 
-import ResidentsIcon from "@/public/homePageIcon/residents.svg";
-import DatesIcon from "@/public/homePageIcon/dates.svg";
-import ApartmentIcon from "@/public/homePageIcon/Apartment.svg";
-import HotelIcon from "@/public/homePageIcon/Hotel.svg";
-import NavigationIcon from "@/public/goback-icon.svg";
+// import HousesIcon from "@/public/homePageIcon/houses.svg"; 
+// import ResidentsIcon from "@/public/homePageIcon/residents.svg";
+// import DatesIcon from "@/public/homePageIcon/dates.svg";
+// import ApartmentIcon from "@/public/homePageIcon/Apartment.svg";
+// import HotelIcon from "@/public/homePageIcon/Hotel.svg";
+// import NavigationIcon from "@/public/goback-icon.svg";
 
 interface DataSelectionProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -62,15 +62,15 @@ export default function DataSelection({ setIsModalOpen, isModalOpen }: DataSelec
         <div className={styles.selectionBlock}>
           <p className={styles.selectionTitle}>Enter selection data</p>
           <div className={styles.housesContainer} onClick={() => setIsModalOpen(true)}>
-            <HousesIcon />
+            {/*<HousesIcon />*/}
             <p>{selectedTypes.length > 0 ? selectedTypes.join(', ') : 'Type of dwelling you need'}</p>
           </div>
           <div className={styles.datesContainer} onClick={() => setIsDateModalOpen(true)}>
-            <DatesIcon />
+            {/* <DatesIcon /> */}
             <p>{selectedDays ? `${selectedDays.from?.toLocaleDateString()} - ${selectedDays.to?.toLocaleDateString()}` : 'Dates'}</p>
           </div>
           <div className={styles.residentsContainer}>
-            <ResidentsIcon />
+            {/* <ResidentsIcon /> */}
             <p>Residents</p>
           </div>
           <button className={styles.applyBtn}>Apply</button>
@@ -83,7 +83,7 @@ export default function DataSelection({ setIsModalOpen, isModalOpen }: DataSelec
             <p>Type of dwelling</p>
             <div className={styles.checkboxGroup}>
               <label className={styles.checkboxLabel}>
-                <HousesIcon />
+                {/* <HousesIcon /> */}
                 <p>House</p>
                 <input 
                   type="checkbox" 
@@ -93,7 +93,7 @@ export default function DataSelection({ setIsModalOpen, isModalOpen }: DataSelec
                 />
               </label>
               <label className={styles.checkboxLabel}>
-                <ApartmentIcon className={styles.apartmentIcon} />
+                {/* <ApartmentIcon className={styles.apartmentIcon} /> */}
                 Apartment
                 <input 
                   type="checkbox" 
@@ -103,7 +103,7 @@ export default function DataSelection({ setIsModalOpen, isModalOpen }: DataSelec
                 />
               </label>
               <label className={styles.checkboxLabel}>
-                <HotelIcon className={styles.hotelIcon}/>
+                {/* <HotelIcon className={styles.hotelIcon}/> */}
                 Hotel
                 <input 
                   type="checkbox" 
@@ -125,11 +125,11 @@ export default function DataSelection({ setIsModalOpen, isModalOpen }: DataSelec
             <div className={styles.calendar}>
               <div className={styles.header}>
                 <button className={styles.prevNav} onClick={handlePrevMonth}>
-                  <NavigationIcon />
+                  {/* <NavigationIcon /> */}
                 </button>
                 <p className={styles.monthLabel}>{month.toLocaleString('en-ru', { month: 'long', year: 'numeric' })}</p>
                 <button className={styles.nextNav} onClick={handleNextMonth}>
-                  <NavigationIcon />
+                  {/* <NavigationIcon /> */}
                 </button>
               </div>
               <DayPicker

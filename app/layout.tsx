@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import "./globals.css";
+// import "./globals.css";
 import { CityProvider } from './context/CityContext'; 
 
 export const metadata: Metadata = {
